@@ -92,4 +92,5 @@ Para instalar o projeto, siga os passos abaixo:
 
 ### Teste Php Unit - Module Auth
 
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/876b1b3f-432e-4f3d-b32a-530b72dab7a9)
+
