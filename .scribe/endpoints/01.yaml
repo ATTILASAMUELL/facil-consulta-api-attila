@@ -1,0 +1,453 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/doctors/consultations
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      doctor_id:
+        name: doctor_id
+        description: 'The <code>id</code> of an existing record in the doctors table.'
+        required: true
+        example: omnis
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      patient_id:
+        name: patient_id
+        description: 'The <code>id</code> of an existing record in the patients table.'
+        required: true
+        example: ex
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      date:
+        name: date
+        description: 'Must be a valid date in the format <code>Y-m-d H:i:s</code>.'
+        required: true
+        example: '2025-01-26 19:48:11'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      doctor_id: omnis
+      patient_id: ex
+      date: '2025-01-26 19:48:11'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/consultations
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      doctor_id:
+        name: doctor_id
+        description: 'The <code>id</code> of an existing record in the doctors table.'
+        required: true
+        example: sed
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      patient_id:
+        name: patient_id
+        description: 'The <code>id</code> of an existing record in the patients table.'
+        required: true
+        example: pariatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      date:
+        name: date
+        description: 'Must be a valid date in the format <code>Y-m-d H:i:s</code>.'
+        required: true
+        example: '2025-01-26 19:48:11'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      doctor_id: sed
+      patient_id: pariatur
+      date: '2025-01-26 19:48:11'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/consultations/{consultation}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      consultation:
+        name: consultation
+        description: 'The consultation.'
+        required: true
+        example: illum
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      consultation: illum
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      doctor_id:
+        name: doctor_id
+        description: 'The <code>id</code> of an existing record in the doctors table.'
+        required: true
+        example: mollitia
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      patient_id:
+        name: patient_id
+        description: 'The <code>id</code> of an existing record in the patients table.'
+        required: true
+        example: totam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      date:
+        name: date
+        description: 'Must be a valid date in the format <code>Y-m-d H:i:s</code>.'
+        required: true
+        example: '2025-01-26 19:48:11'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      doctor_id: mollitia
+      patient_id: totam
+      date: '2025-01-26 19:48:11'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/patients
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: hqriosshcgplbnmwpzp
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      cpf:
+        name: cpf
+        description: 'Must not be greater than 14 characters.'
+        required: true
+        example: ccwijhtnbp
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      cellphone:
+        name: cellphone
+        description: 'Must not be greater than 20 characters.'
+        required: true
+        example: stjnaqctkhocppmxx
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: hqriosshcgplbnmwpzp
+      cpf: ccwijhtnbp
+      cellphone: stjnaqctkhocppmxx
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/patients/{patient}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      patient:
+        name: patient
+        description: 'The patient.'
+        required: true
+        example: eius
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      patient: eius
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: lknnikonjycis
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      cpf:
+        name: cpf
+        description: 'Must not be greater than 14 characters.'
+        required: false
+        example: pwqvw
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      cellphone:
+        name: cellphone
+        description: 'Must not be greater than 20 characters.'
+        required: false
+        example: kvnkjy
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: lknnikonjycis
+      cpf: pwqvw
+      cellphone: kvnkjy
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/patients/{patient_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      patient_id:
+        name: patient_id
+        description: 'The ID of the patient.'
+        required: true
+        example: qui
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      patient_id: qui
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: uasgqasifmlesqyos
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      cpf:
+        name: cpf
+        description: 'Must not be greater than 14 characters.'
+        required: false
+        example: maiwecieaw
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      cellphone:
+        name: cellphone
+        description: 'Must not be greater than 20 characters.'
+        required: false
+        example: fgepmqoncvb
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: uasgqasifmlesqyos
+      cpf: maiwecieaw
+      cellphone: fgepmqoncvb
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/cities
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":"success","message":"Cities retrieved successfully","data":[{"id":189,"name":"Alessandrofort","state":"Missouri","doctors":[{"id":149,"name":"Miss Pink Halvorson","specialty":"mollitia"}]},{"id":32,"name":"Antonioport","state":"Colorado","doctors":[{"id":12,"name":"Prof Ryan Shields I","specialty":"voluptatem"}]},{"id":100,"name":"Athenachester","state":"Utah","doctors":[{"id":70,"name":"Nayeli Shanahan III","specialty":"quas"}]},{"id":33,"name":"Aufderharmouth","state":"Hawaii","doctors":[{"id":13,"name":"Fern Lynch","specialty":"dolore"}]},{"id":108,"name":"Balistrerifurt","state":"Idaho","doctors":[{"id":78,"name":"Ms Alia Christiansen IV","specialty":"doloribus"}]},{"id":63,"name":"Bauchmouth","state":"Nevada","doctors":[{"id":43,"name":"Miss Lenora Ferry II","specialty":"molestiae"}]},{"id":105,"name":"Bentonhaven","state":"Maine","doctors":[{"id":75,"name":"Mr Lucio Russel","specialty":"ea"}]},{"id":135,"name":"Bethanyland","state":"Wyoming","doctors":[{"id":105,"name":"Alanna DAmore","specialty":"voluptas"}]},{"id":143,"name":"Bonitaview","state":"Maryland","doctors":[{"id":113,"name":"Paula Nienow","specialty":"dolore"}]},{"id":27,"name":"Braunmouth","state":"North Dakota","doctors":[]},{"id":74,"name":"Buckridgebury","state":"Hawaii","doctors":[]},{"id":166,"name":"Carolebury","state":"Alaska","doctors":[{"id":126,"name":"Mauricio Mueller","specialty":"aut"}]},{"id":129,"name":"Caseyfurt","state":"Mississippi","doctors":[{"id":99,"name":"Moses Treutel","specialty":"ad"}]},{"id":146,"name":"Casperside","state":"Pennsylvania","doctors":[{"id":116,"name":"Wilbert Kling","specialty":"consectetur"}]},{"id":125,"name":"Celestinoton","state":"Maryland","doctors":[{"id":95,"name":"Santina Vandervort","specialty":"eos"}]},{"id":148,"name":"Christaland","state":"Arizona","doctors":[{"id":118,"name":"Coy Koch","specialty":"eos"}]},{"id":133,"name":"Cristview","state":"North Carolina","doctors":[{"id":103,"name":"Scottie Franecki","specialty":"rerum"}]},{"id":22,"name":"Dantefurt","state":"Pennsylvania","doctors":[]},{"id":37,"name":"Daphneeshire","state":"North Dakota","doctors":[{"id":17,"name":"Lauryn Ziemann","specialty":"rerum"}]},{"id":87,"name":"Darrentown","state":"North Dakota","doctors":[{"id":57,"name":"Orlando McClure","specialty":"ut"}]},{"id":15,"name":"Daughertytown","state":"North Carolina","doctors":[{"id":5,"name":"Prof Beau Schultz","specialty":"porro"}]},{"id":178,"name":"Deckowborough","state":"Montana","doctors":[{"id":138,"name":"Dane Prosacco","specialty":"aut"}]},{"id":123,"name":"Deontefurt","state":"California","doctors":[{"id":93,"name":"Presley Balistreri","specialty":"ipsa"}]},{"id":18,"name":"Devontehaven","state":"Illinois","doctors":[{"id":8,"name":"Liana Cronin","specialty":"perspiciatis"}]},{"id":38,"name":"Douglasstad","state":"Arizona","doctors":[{"id":18,"name":"Bennie Cassin","specialty":"ea"}]},{"id":201,"name":"East Adeliamouth","state":"Rhode Island","doctors":[{"id":161,"name":"Dolly Barton","specialty":"molestiae"}]},{"id":191,"name":"East Aidatown","state":"Maryland","doctors":[{"id":151,"name":"Josiane Schowalter","specialty":"amet"}]},{"id":49,"name":"East Bria","state":"New Hampshire","doctors":[{"id":29,"name":"Cruz Miller","specialty":"eos"}]},{"id":54,"name":"East Cletushaven","state":"New Jersey","doctors":[{"id":34,"name":"Dr Cordell Jakubowski","specialty":"aut"}]},{"id":62,"name":"East Enolachester","state":"North Carolina","doctors":[{"id":42,"name":"Emily Robel","specialty":"facere"}]},{"id":86,"name":"East Janis","state":"New Mexico","doctors":[{"id":56,"name":"Jerrell Anderson","specialty":"ratione"}]},{"id":69,"name":"East Katharinaland","state":"Washington","doctors":[{"id":49,"name":"Virginia Williamson","specialty":"ex"}]},{"id":103,"name":"East Lloyd","state":"Alabama","doctors":[{"id":73,"name":"Antonette Hermann","specialty":"laudantium"}]},{"id":119,"name":"East Marlene","state":"Nevada","doctors":[{"id":89,"name":"Mrs Arlie Breitenberg","specialty":"ad"}]},{"id":89,"name":"East Micah","state":"Georgia","doctors":[{"id":59,"name":"Wilson Johnson II","specialty":"fugit"}]},{"id":104,"name":"East Mossie","state":"Ohio","doctors":[{"id":74,"name":"Tia Monahan","specialty":"quia"}]},{"id":88,"name":"East Precious","state":"District of Columbia","doctors":[{"id":58,"name":"Modesto Bayer III","specialty":"delectus"}]},{"id":187,"name":"East Sabrynaville","state":"Oklahoma","doctors":[{"id":147,"name":"Dr Coy Kunde DVM","specialty":"blanditiis"}]},{"id":94,"name":"East Scottyport","state":"Maryland","doctors":[{"id":64,"name":"Arnold Connelly","specialty":"cum"}]},{"id":152,"name":"East Susanatown","state":"Indiana","doctors":[]},{"id":110,"name":"East Tania","state":"District of Columbia","doctors":[{"id":80,"name":"Kaylie Simonis","specialty":"beatae"}]},{"id":41,"name":"East Yasmin","state":"California","doctors":[{"id":21,"name":"Tanner Ondricka","specialty":"dignissimos"}]},{"id":193,"name":"Eichmannshire","state":"Alabama","doctors":[{"id":153,"name":"Mrs Amya Langworth IV","specialty":"perspiciatis"}]},{"id":128,"name":"Eleanoraborough","state":"Ohio","doctors":[{"id":98,"name":"Adelia Anderson","specialty":"architecto"}]},{"id":115,"name":"Emilietown","state":"Mississippi","doctors":[{"id":85,"name":"Ms Lorna Schmidt","specialty":"omnis"}]},{"id":177,"name":"Emmychester","state":"South Dakota","doctors":[{"id":137,"name":"Izabella Schroeder","specialty":"quia"}]},{"id":17,"name":"Erdmanhaven","state":"West Virginia","doctors":[{"id":7,"name":"Ahmad Watsica","specialty":"vitae"}]},{"id":102,"name":"Fayville","state":"Wyoming","doctors":[{"id":72,"name":"Simeon Becker","specialty":"aspernatur"}]},{"id":141,"name":"Feilview","state":"New Hampshire","doctors":[{"id":111,"name":"Elinor Reinger","specialty":"consequatur"}]},{"id":168,"name":"Felicialand","state":"Florida","doctors":[{"id":128,"name":"Dedric Davis","specialty":"impedit"}]},{"id":188,"name":"Finnton","state":"Michigan","doctors":[{"id":148,"name":"Westley Langworth","specialty":"dolor"}]},{"id":126,"name":"Forrestville","state":"Illinois","doctors":[{"id":96,"name":"William Torphy","specialty":"dolor"}]},{"id":14,"name":"Gavinshire","state":"Massachusetts","doctors":[{"id":4,"name":"Prof Seamus Bailey","specialty":"accusantium"}]},{"id":43,"name":"Genovevaville","state":"Pennsylvania","doctors":[{"id":23,"name":"Tod Keebler","specialty":"impedit"}]},{"id":8,"name":"Goodwinside","state":"Pennsylvania","doctors":[]},{"id":34,"name":"Gracielafurt","state":"Louisiana","doctors":[{"id":14,"name":"Jameson Zboncak","specialty":"officiis"}]},{"id":176,"name":"Gutkowskifort","state":"Wyoming","doctors":[{"id":136,"name":"Joyce Brakus","specialty":"porro"}]},{"id":122,"name":"Haleytown","state":"Nebraska","doctors":[{"id":92,"name":"Dr Payton Altenwerth","specialty":"molestias"}]},{"id":2,"name":"Harrisbury","state":"Mississippi","doctors":[]},{"id":68,"name":"Hegmannshire","state":"Colorado","doctors":[{"id":48,"name":"Madelyn Emard III","specialty":"amet"}]},{"id":26,"name":"Hettiehaven","state":"Colorado","doctors":[]},{"id":99,"name":"Hickleland","state":"Nebraska","doctors":[{"id":69,"name":"Jessika Goldner","specialty":"asperiores"}]},{"id":5,"name":"Houstonmouth","state":"Louisiana","doctors":[]},{"id":127,"name":"Howellside","state":"North Carolina","doctors":[{"id":97,"name":"Demetris Balistreri","specialty":"unde"}]},{"id":159,"name":"Javierfort","state":"Alabama","doctors":[]},{"id":151,"name":"Jaydonfort","state":"Maryland","doctors":[{"id":121,"name":"Dr Daphney Romaguera PhD","specialty":"sunt"}]},{"id":117,"name":"Jonesside","state":"Kansas","doctors":[{"id":87,"name":"Reagan Rau","specialty":"qui"}]},{"id":52,"name":"Jordonfort","state":"Hawaii","doctors":[{"id":32,"name":"Alice Kunde","specialty":"cum"}]},{"id":190,"name":"Julianland","state":"Rhode Island","doctors":[{"id":150,"name":"Emmet Rosenbaum","specialty":"distinctio"}]},{"id":107,"name":"Julieborough","state":"New York","doctors":[{"id":77,"name":"Joy Hoppe","specialty":"harum"}]},{"id":154,"name":"Kubport","state":"Florida","doctors":[]},{"id":84,"name":"Lake Delilah","state":"Alabama","doctors":[{"id":54,"name":"Lorine Mann PhD","specialty":"aut"}]},{"id":121,"name":"Lake Elizastad","state":"Mississippi","doctors":[{"id":91,"name":"Christopher Abshire DDS","specialty":"quis"}]},{"id":10,"name":"Lake Fredport","state":"Massachusetts","doctors":[]},{"id":66,"name":"Lake Hildaberg","state":"South Dakota","doctors":[{"id":46,"name":"Mrs Elisha Balistreri","specialty":"qui"}]},{"id":42,"name":"Lake Isaimouth","state":"Iowa","doctors":[{"id":22,"name":"Stefanie Miller DDS","specialty":"qui"}]},{"id":72,"name":"Lake Nayeli","state":"Maryland","doctors":[]},{"id":13,"name":"Lake Pattiechester","state":"Alabama","doctors":[{"id":3,"name":"Dr Virgil Lynch","specialty":"magni"}]},{"id":185,"name":"Lake Queenieborough","state":"Utah","doctors":[{"id":145,"name":"Alexanne McKenzie","specialty":"qui"}]},{"id":156,"name":"Lake Reymouth","state":"Pennsylvania","doctors":[]},{"id":139,"name":"Lake Shanny","state":"New Hampshire","doctors":[{"id":109,"name":"Helen Price","specialty":"ab"}]},{"id":95,"name":"Lake Skylarport","state":"Hawaii","doctors":[{"id":65,"name":"Andrew Wilderman III","specialty":"iste"}]},{"id":70,"name":"Lake Velmamouth","state":"Georgia","doctors":[{"id":50,"name":"Makayla Adams","specialty":"tenetur"}]},{"id":180,"name":"Langbury","state":"Wisconsin","doctors":[{"id":140,"name":"Alta Sawayn","specialty":"voluptas"}]},{"id":164,"name":"Laurineport","state":"Maryland","doctors":[{"id":124,"name":"Prof Jo Spinka I","specialty":"sint"}]},{"id":124,"name":"Leannemouth","state":"New Mexico","doctors":[{"id":94,"name":"Richie Quigley","specialty":"qui"}]},{"id":67,"name":"Lockmanmouth","state":"District of Columbia","doctors":[{"id":47,"name":"Savanah Mraz","specialty":"consectetur"}]},{"id":46,"name":"Lucioberg","state":"Delaware","doctors":[{"id":26,"name":"Valentina Ward","specialty":"quia"}]},{"id":114,"name":"Lylachester","state":"Arkansas","doctors":[{"id":84,"name":"Miss Amira Walsh III","specialty":"dolor"}]},{"id":1,"name":"Majorville","state":"Louisiana","doctors":[]},{"id":97,"name":"Marcochester","state":"Colorado","doctors":[{"id":67,"name":"Dandre Miller","specialty":"et"}]},{"id":162,"name":"Mariettamouth","state":"Missouri","doctors":[{"id":122,"name":"Justina Stamm","specialty":"beatae"}]},{"id":161,"name":"Marinafurt","state":"Alabama","doctors":[]},{"id":106,"name":"Maudburgh","state":"Colorado","doctors":[{"id":76,"name":"Reed McKenzie","specialty":"ex"}]},{"id":59,"name":"McClureborough","state":"Maryland","doctors":[{"id":39,"name":"Dr Eliseo Lakin","specialty":"similique"}]},{"id":198,"name":"Moenbury","state":"North Carolina","doctors":[{"id":158,"name":"Yvonne Mitchell","specialty":"consequuntur"}]},{"id":75,"name":"Moenview","state":"Minnesota","doctors":[]},{"id":109,"name":"Monahanborough","state":"Wyoming","doctors":[{"id":79,"name":"Chet Swift Sr","specialty":"et"}]},{"id":21,"name":"Naomiebury","state":"Missouri","doctors":[{"id":11,"name":"Ofelia Medhurst","specialty":"possimus"}]},{"id":175,"name":"New Araceli","state":"Pennsylvania","doctors":[{"id":135,"name":"Aisha Wisoky","specialty":"rerum"}]},{"id":140,"name":"New Bartholometon","state":"North Dakota","doctors":[{"id":110,"name":"Napoleon Wyman","specialty":"aut"}]},{"id":51,"name":"New Chloeport","state":"Washington","doctors":[{"id":31,"name":"Sheila Oberbrunner","specialty":"qui"}]},{"id":80,"name":"New Cordia","state":"Montana","doctors":[]},{"id":150,"name":"New Deionchester","state":"Louisiana","doctors":[{"id":120,"name":"Prof Taryn Keeling","specialty":"occaecati"}]},{"id":98,"name":"New Jonshire","state":"Montana","doctors":[{"id":68,"name":"Miss Viviane Bradtke Sr","specialty":"numquam"}]},{"id":78,"name":"New Julian","state":"Hawaii","doctors":[]},{"id":147,"name":"New Justice","state":"Kansas","doctors":[{"id":117,"name":"Ivah West MD","specialty":"eum"}]},{"id":65,"name":"New Madalynland","state":"Georgia","doctors":[{"id":45,"name":"Chauncey Terry IV","specialty":"voluptatem"}]},{"id":169,"name":"New Mario","state":"South Carolina","doctors":[{"id":129,"name":"Shane Ratke","specialty":"aperiam"}]},{"id":172,"name":"New Rosemaryside","state":"Wyoming","doctors":[{"id":132,"name":"Demond Hirthe II","specialty":"amet"}]},{"id":111,"name":"New Theodoraside","state":"South Dakota","doctors":[{"id":81,"name":"Ruthie Beahan","specialty":"voluptate"}]},{"id":11,"name":"Nikolauschester","state":"Ohio","doctors":[{"id":1,"name":"Brant Murphy","specialty":"illum"}]},{"id":134,"name":"Nolanberg","state":"Oregon","doctors":[{"id":104,"name":"Veda Mraz","specialty":"veniam"}]},{"id":149,"name":"Nolanstad","state":"Indiana","doctors":[{"id":119,"name":"Kaela Kassulke","specialty":"similique"}]},{"id":112,"name":"North Adellaview","state":"Massachusetts","doctors":[{"id":82,"name":"Salvatore Shields","specialty":"quaerat"}]},{"id":130,"name":"North Angelhaven","state":"Wyoming","doctors":[{"id":100,"name":"Dr Norbert Satterfield MD","specialty":"ad"}]},{"id":85,"name":"North Aurore","state":"West Virginia","doctors":[{"id":55,"name":"Dr Lela Barrows","specialty":"modi"}]},{"id":44,"name":"North Bennie","state":"Tennessee","doctors":[{"id":24,"name":"Fern Osinski","specialty":"minima"}]},{"id":16,"name":"North Cassie","state":"Louisiana","doctors":[{"id":6,"name":"Lennie Huels","specialty":"laborum"}]},{"id":183,"name":"North Colemanside","state":"Virginia","doctors":[{"id":143,"name":"Prof Hassan Hermiston II","specialty":"rerum"}]},{"id":142,"name":"North Crawfordmouth","state":"Vermont","doctors":[{"id":112,"name":"Toy Senger Sr","specialty":"necessitatibus"}]},{"id":96,"name":"North Josianne","state":"Arizona","doctors":[{"id":66,"name":"Prof Benny Upton","specialty":"sed"}]},{"id":50,"name":"North Kristin","state":"Vermont","doctors":[{"id":30,"name":"Erick Zemlak Sr","specialty":"voluptate"}]},{"id":131,"name":"North Nikkiview","state":"Alaska","doctors":[{"id":101,"name":"Dr Amalia Murray Jr","specialty":"quae"}]},{"id":90,"name":"North Novaville","state":"District of Columbia","doctors":[{"id":60,"name":"Ignacio Schmidt","specialty":"quo"}]},{"id":153,"name":"North Odie","state":"Arkansas","doctors":[]},{"id":81,"name":"North Rhianna","state":"Kentucky","doctors":[]},{"id":23,"name":"North Sam","state":"New York","doctors":[]},{"id":173,"name":"North Stevie","state":"Maryland","doctors":[{"id":133,"name":"Mr Cale Rowe V","specialty":"nihil"}]},{"id":35,"name":"North Tretown","state":"Maryland","doctors":[{"id":15,"name":"Josephine Adams","specialty":"laboriosam"}]},{"id":64,"name":"Ocieport","state":"Vermont","doctors":[{"id":44,"name":"Clark Abbott","specialty":"dolorem"}]},{"id":200,"name":"Pablomouth","state":"Ohio","doctors":[{"id":160,"name":"Wellington Moen IV","specialty":"nihil"}]},{"id":45,"name":"Pagacmouth","state":"Illinois","doctors":[{"id":25,"name":"Mr Narciso Metz","specialty":"voluptatibus"}]},{"id":120,"name":"Port Jesus","state":"Massachusetts","doctors":[{"id":90,"name":"Prof Amira Spencer","specialty":"rem"}]},{"id":55,"name":"Port Karli","state":"California","doctors":[{"id":35,"name":"Prof Dustin Rempel Sr","specialty":"quia"}]},{"id":53,"name":"Port Kian","state":"Wyoming","doctors":[{"id":33,"name":"Savanah Boyle","specialty":"omnis"}]},{"id":113,"name":"Port Leon","state":"Louisiana","doctors":[{"id":83,"name":"Alvera Pollich","specialty":"explicabo"}]},{"id":165,"name":"Port Lonniemouth","state":"Tennessee","doctors":[{"id":125,"name":"Elijah Kassulke","specialty":"corporis"}]},{"id":199,"name":"Port Marina","state":"Michigan","doctors":[{"id":159,"name":"Mitchell Torp","specialty":"debitis"}]},{"id":118,"name":"Port Nedra","state":"South Carolina","doctors":[{"id":88,"name":"Jerrold Parisian","specialty":"perferendis"}]},{"id":101,"name":"Port Russ","state":"Utah","doctors":[{"id":71,"name":"Pablo Ullrich","specialty":"voluptatibus"}]},{"id":60,"name":"Port Tina","state":"Massachusetts","doctors":[{"id":40,"name":"Dulce Padberg","specialty":"qui"}]},{"id":93,"name":"Port Tommieshire","state":"Mississippi","doctors":[{"id":63,"name":"Jovany Gulgowski","specialty":"veritatis"}]},{"id":76,"name":"Port Willowberg","state":"Wisconsin","doctors":[]},{"id":31,"name":"Prohaskaville","state":"Indiana","doctors":[]},{"id":160,"name":"Randishire","state":"Hawaii","doctors":[]},{"id":196,"name":"Rodolfohaven","state":"Arkansas","doctors":[{"id":156,"name":"Prof Alexzander Kutch DVM","specialty":"ipsa"}]},{"id":138,"name":"Rodrickhaven","state":"South Carolina","doctors":[{"id":108,"name":"Miss Kitty Dibbert","specialty":"in"}]},{"id":163,"name":"Rosenbaumville","state":"Kentucky","doctors":[{"id":123,"name":"Marco Bradtke MD","specialty":"ea"}]},{"id":28,"name":"Russelburgh","state":"California","doctors":[]},{"id":12,"name":"Satterfieldbury","state":"Virginia","doctors":[{"id":2,"name":"Brent Rath","specialty":"quia"}]},{"id":83,"name":"Simonisview","state":"District of Columbia","doctors":[{"id":53,"name":"Garett Abernathy","specialty":"autem"}]},{"id":25,"name":"Skileschester","state":"Ohio","doctors":[]},{"id":195,"name":"South Berenice","state":"Virginia","doctors":[{"id":155,"name":"Bettye Kulas","specialty":"consequatur"}]},{"id":29,"name":"South Bettye","state":"New York","doctors":[]},{"id":48,"name":"South Carliview","state":"North Carolina","doctors":[{"id":28,"name":"Dr Dayne Rohan","specialty":"facilis"}]},{"id":7,"name":"South Estelle","state":"North Carolina","doctors":[]},{"id":171,"name":"South Ethanport","state":"Mississippi","doctors":[{"id":131,"name":"Alysson Kuhic","specialty":"fugit"}]},{"id":9,"name":"South Germaine","state":"Louisiana","doctors":[]},{"id":58,"name":"South Godfrey","state":"Virginia","doctors":[{"id":38,"name":"Lane Witting Jr","specialty":"incidunt"}]},{"id":61,"name":"South Jess","state":"Massachusetts","doctors":[{"id":41,"name":"Cleora Price","specialty":"excepturi"}]},{"id":47,"name":"South Judechester","state":"South Dakota","doctors":[{"id":27,"name":"Misty Keeling Sr","specialty":"ut"}]},{"id":91,"name":"South Kaleighside","state":"Illinois","doctors":[{"id":61,"name":"Astrid Stracke","specialty":"ratione"}]},{"id":182,"name":"South Laverna","state":"Montana","doctors":[{"id":142,"name":"Alexane Douglas","specialty":"sunt"}]},{"id":167,"name":"South Muhammadburgh","state":"Mississippi","doctors":[{"id":127,"name":"Oliver Langworth","specialty":"facere"}]},{"id":30,"name":"South Nelleborough","state":"South Carolina","doctors":[]},{"id":136,"name":"South Ova","state":"Arizona","doctors":[{"id":106,"name":"Mr Skye Stokes","specialty":"voluptatum"}]},{"id":40,"name":"South Patrick","state":"South Carolina","doctors":[{"id":20,"name":"Mervin Stamm DDS","specialty":"qui"}]},{"id":36,"name":"Tristianmouth","state":"Wisconsin","doctors":[{"id":16,"name":"Dr Shanelle Green V","specialty":"non"}]},{"id":3,"name":"Trystanberg","state":"Rhode Island","doctors":[]},{"id":24,"name":"Turnerville","state":"Indiana","doctors":[]},{"id":145,"name":"Ullrichview","state":"Mississippi","doctors":[{"id":115,"name":"Drew Gleason","specialty":"commodi"}]},{"id":56,"name":"Uriahland","state":"District of Columbia","doctors":[{"id":36,"name":"Frederique Yost","specialty":"vero"}]},{"id":184,"name":"Vincenzahaven","state":"Pennsylvania","doctors":[{"id":144,"name":"Marjolaine Hartmann IV","specialty":"eaque"}]},{"id":79,"name":"Vincenzamouth","state":"District of Columbia","doctors":[]},{"id":179,"name":"Walshfort","state":"Idaho","doctors":[{"id":139,"name":"Lori Schultz","specialty":"illo"}]},{"id":170,"name":"Welchhaven","state":"Maryland","doctors":[{"id":130,"name":"Kattie Metz","specialty":"saepe"}]},{"id":137,"name":"West Alexandroburgh","state":"Alabama","doctors":[{"id":107,"name":"Mose Hammes","specialty":"vero"}]},{"id":192,"name":"West Christport","state":"West Virginia","doctors":[{"id":152,"name":"Dr Thurman Powlowski III","specialty":"sequi"}]},{"id":194,"name":"West Erick","state":"Idaho","doctors":[{"id":154,"name":"Alba Gusikowski III","specialty":"nulla"}]},{"id":39,"name":"West Eulah","state":"Oklahoma","doctors":[{"id":19,"name":"Leonora Ullrich","specialty":"enim"}]},{"id":186,"name":"West Gavinborough","state":"Delaware","doctors":[{"id":146,"name":"Valentina Bauch MD","specialty":"eos"}]},{"id":155,"name":"West Gayleborough","state":"South Carolina","doctors":[]},{"id":181,"name":"West Gracielaburgh","state":"Delaware","doctors":[{"id":141,"name":"Claudia Stark","specialty":"velit"}]},{"id":6,"name":"West Ignacioshire","state":"North Dakota","doctors":[]},{"id":174,"name":"West Joeburgh","state":"Connecticut","doctors":[{"id":134,"name":"Leland Mertz","specialty":"sint"}]},{"id":157,"name":"West Josiane","state":"Vermont","doctors":[]},{"id":71,"name":"West Kamrenview","state":"Virginia","doctors":[{"id":51,"name":"Kyra Heathcote","specialty":"cupiditate"}]},{"id":73,"name":"West Larue","state":"Montana","doctors":[]},{"id":158,"name":"West Marco","state":"Louisiana","doctors":[]},{"id":20,"name":"West Mercedesshire","state":"Utah","doctors":[{"id":10,"name":"Dr Caden Skiles","specialty":"harum"}]},{"id":116,"name":"West Sterling","state":"North Dakota","doctors":[{"id":86,"name":"Ms Joannie Friesen","specialty":"aspernatur"}]},{"id":82,"name":"West Thelma","state":"Tennessee","doctors":[{"id":52,"name":"Prof Gretchen Gerlach II","specialty":"eum"}]},{"id":4,"name":"West Ursula","state":"North Carolina","doctors":[]},{"id":57,"name":"West Verniceberg","state":"Illinois","doctors":[{"id":37,"name":"Matteo Smith","specialty":"accusamus"}]},{"id":92,"name":"West Vinnie","state":"Ohio","doctors":[{"id":62,"name":"Theodore Daugherty","specialty":"reiciendis"}]},{"id":77,"name":"Whiteton","state":"Kansas","doctors":[]},{"id":19,"name":"Wizamouth","state":"Rhode Island","doctors":[{"id":9,"name":"Prof Kenyon Rodriguez MD","specialty":"et"}]},{"id":132,"name":"Wymanbury","state":"Virginia","doctors":[{"id":102,"name":"Mrs Jessyca Walter Jr","specialty":"assumenda"}]},{"id":197,"name":"Zaneborough","state":"South Dakota","doctors":[{"id":157,"name":"Dr Myrna Botsford Sr","specialty":"aut"}]},{"id":144,"name":"Zariastad","state":"Oklahoma","doctors":[{"id":114,"name":"Dangelo Abbott","specialty":"et"}]}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

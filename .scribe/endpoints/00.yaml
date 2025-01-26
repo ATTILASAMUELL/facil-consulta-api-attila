@@ -1,0 +1,317 @@
+name: Auth
+description: |-
+
+  API endpoints for user authentication, registration, and profile management.
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: Auth
+      groupDescription: |-
+
+        API endpoints for user authentication, registration, and profile management.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Logout the user and invalidate the token.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Successfully logged out"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "error": "Failed to log out. Please try again later."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/refresh
+    metadata:
+      groupName: Auth
+      groupDescription: |-
+
+        API endpoints for user authentication, registration, and profile management.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Refresh the user token.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Token refreshed successfully",
+            "token": "new-jwt-token"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "error": "Failed to refresh token. Please try again later."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/profile
+    metadata:
+      groupName: Auth
+      groupDescription: |-
+
+        API endpoints for user authentication, registration, and profile management.
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Get the authenticated user's profile."
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "User profile retrieved successfully",
+            "user": {"id":1, "name":"John Doe", "email":"john.doe@example.com"}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "error": "Failed to retrieve user profile. Please try again later."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: Auth
+      groupDescription: |-
+
+        API endpoints for user authentication, registration, and profile management.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Login a user and get a token.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'The email of the user.'
+        required: true
+        example: john.doe@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'The password of the user.'
+        required: true
+        example: secret123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: john.doe@example.com
+      password: secret123
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Login successful",
+            "user": {"id":1, "name":"John Doe", "email":"john.doe@example.com"},
+            "token": "jwt-token",
+            "token_type": "Bearer",
+            "expires_in": "2025-01-01T00:00:00"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "error": "Login failed. Please try again later."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      groupName: Auth
+      groupDescription: |-
+
+        API endpoints for user authentication, registration, and profile management.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Register a new user.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the user.'
+        required: true
+        example: 'John Doe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'The email of the user.'
+        required: true
+        example: john.doe@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'The password of the user.'
+        required: true
+        example: secret123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: 'John Doe'
+      email: john.doe@example.com
+      password: secret123
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "message": "User registered successfully",
+            "user": {"id":1, "name":"John Doe", "email":"john.doe@example.com"}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "error": "Failed to register user. Please try again later."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

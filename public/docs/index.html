@@ -1,0 +1,4709 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>FacilConsulta Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var tryItOutBaseUrl = "http://localhost";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.39.0.js"></script>
+
+    <script src="../docs/js/theme-default-4.39.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-auth" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="auth">
+                    <a href="#auth">Auth</a>
+                </li>
+                                    <ul id="tocify-subheader-auth" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="auth-POSTapi-logout">
+                                <a href="#auth-POSTapi-logout">Logout the user and invalidate the token.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="auth-POSTapi-refresh">
+                                <a href="#auth-POSTapi-refresh">Refresh the user token.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="auth-GETapi-profile">
+                                <a href="#auth-GETapi-profile">Get the authenticated user's profile.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="auth-POSTapi-login">
+                                <a href="#auth-POSTapi-login">Login a user and get a token.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="auth-POSTapi-register">
+                                <a href="#auth-POSTapi-register">Register a new user.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-doctor" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="doctor">
+                    <a href="#doctor">Doctor</a>
+                </li>
+                                    <ul id="tocify-subheader-doctor" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="doctor-GETapi-cities--city_id--doctors">
+                                <a href="#doctor-GETapi-cities--city_id--doctors">Get a list of doctors by city.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="doctor-GETapi-cities--city_id--doctors-specialty">
+                                <a href="#doctor-GETapi-cities--city_id--doctors-specialty">Get a list of doctors by city and specialty.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="doctor-GETapi-doctors">
+                                <a href="#doctor-GETapi-doctors">Get a list of doctors by city.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-doctors-consultations">
+                                <a href="#endpoints-POSTapi-doctors-consultations">POST api/doctors/consultations</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-consultations">
+                                <a href="#endpoints-POSTapi-consultations">POST api/consultations</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-consultations--consultation-">
+                                <a href="#endpoints-PUTapi-consultations--consultation-">PUT api/consultations/{consultation}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-patients">
+                                <a href="#endpoints-POSTapi-patients">POST api/patients</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-patients--patient-">
+                                <a href="#endpoints-PUTapi-patients--patient-">PUT api/patients/{patient}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-patients--patient_id-">
+                                <a href="#endpoints-POSTapi-patients--patient_id-">POST api/patients/{patient_id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-cities">
+                                <a href="#endpoints-GETapi-cities">GET api/cities</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: January 26, 2025</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://localhost</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="auth">Auth</h1>
+
+    <p>API endpoints for user authentication, registration, and profile management.</p>
+
+                                <h2 id="auth-POSTapi-logout">Logout the user and invalidate the token.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-logout">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Successfully logged out&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: &quot;Failed to log out. Please try again later.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-logout"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-logout">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-logout" data-method="POST"
+      data-path="api/logout"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-logout"
+                    onclick="tryItOut('POSTapi-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-logout"
+                    onclick="cancelTryOut('POSTapi-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-logout"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/logout</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="auth-POSTapi-refresh">Refresh the user token.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-refresh">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/refresh" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/refresh"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-refresh">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Token refreshed successfully&quot;,
+    &quot;token&quot;: &quot;new-jwt-token&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: &quot;Failed to refresh token. Please try again later.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-refresh" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-refresh"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-refresh"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-refresh" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-refresh">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-refresh" data-method="POST"
+      data-path="api/refresh"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-refresh', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-refresh"
+                    onclick="tryItOut('POSTapi-refresh');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-refresh"
+                    onclick="cancelTryOut('POSTapi-refresh');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-refresh"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/refresh</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-refresh"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-refresh"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="auth-GETapi-profile">Get the authenticated user&#039;s profile.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-profile">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/profile" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/profile"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-profile">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;User profile retrieved successfully&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: &quot;Failed to retrieve user profile. Please try again later.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-profile" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-profile"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-profile"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-profile" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-profile">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-profile" data-method="GET"
+      data-path="api/profile"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-profile', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-profile"
+                    onclick="tryItOut('GETapi-profile');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-profile"
+                    onclick="cancelTryOut('GETapi-profile');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-profile"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/profile</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-profile"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-profile"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="auth-POSTapi-login">Login a user and get a token.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"john.doe@example.com\",
+    \"password\": \"secret123\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "john.doe@example.com",
+    "password": "secret123"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Login successful&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;
+    },
+    &quot;token&quot;: &quot;jwt-token&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;,
+    &quot;expires_in&quot;: &quot;2025-01-01T00:00:00&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: &quot;Login failed. Please try again later.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-login"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-login">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-login" data-method="POST"
+      data-path="api/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-login"
+                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-login"
+                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-login"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/login</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-login"
+               value="john.doe@example.com"
+               data-component="body">
+    <br>
+<p>The email of the user. Example: <code>john.doe@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-login"
+               value="secret123"
+               data-component="body">
+    <br>
+<p>The password of the user. Example: <code>secret123</code></p>
+        </div>
+        </form>
+
+                    <h2 id="auth-POSTapi-register">Register a new user.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-register">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/register" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"John Doe\",
+    \"email\": \"john.doe@example.com\",
+    \"password\": \"secret123\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "secret123"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-register">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;User registered successfully&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: &quot;Failed to register user. Please try again later.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-register" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-register"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-register"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-register">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-register" data-method="POST"
+      data-path="api/register"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-register', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-register"
+                    onclick="tryItOut('POSTapi-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-register"
+                    onclick="cancelTryOut('POSTapi-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-register"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/register</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-register"
+               value="John Doe"
+               data-component="body">
+    <br>
+<p>The name of the user. Example: <code>John Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-register"
+               value="john.doe@example.com"
+               data-component="body">
+    <br>
+<p>The email of the user. Example: <code>john.doe@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-register"
+               value="secret123"
+               data-component="body">
+    <br>
+<p>The password of the user. Example: <code>secret123</code></p>
+        </div>
+        </form>
+
+                <h1 id="doctor">Doctor</h1>
+
+    <p>API endpoints for managing doctors, including searching by city, specialty, and name.</p>
+
+                                <h2 id="doctor-GETapi-cities--city_id--doctors">Get a list of doctors by city.</h2>
+
+<p>
+</p>
+
+<p>This endpoint allows you to retrieve a list of doctors filtered by city.</p>
+
+<span id="example-requests-GETapi-cities--city_id--doctors">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/cities/1/doctors?name=John+Doe" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/cities/1/doctors"
+);
+
+const params = {
+    "name": "John Doe",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-cities--city_id--doctors">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Doctors retrieved successfully&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Dr. John Doe&quot;,
+            &quot;specialty&quot;: &quot;Cardiologist&quot;,
+            &quot;city&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;New York&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Dr. Jane Smith&quot;,
+            &quot;specialty&quot;: &quot;Dermatologist&quot;,
+            &quot;city&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;New York&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: &quot;Failed to retrieve doctors. Please try again later.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-cities--city_id--doctors" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-cities--city_id--doctors"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-cities--city_id--doctors"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-cities--city_id--doctors" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-cities--city_id--doctors">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-cities--city_id--doctors" data-method="GET"
+      data-path="api/cities/{city_id}/doctors"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-cities--city_id--doctors', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-cities--city_id--doctors"
+                    onclick="tryItOut('GETapi-cities--city_id--doctors');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-cities--city_id--doctors"
+                    onclick="cancelTryOut('GETapi-cities--city_id--doctors');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-cities--city_id--doctors"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/cities/{city_id}/doctors</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-cities--city_id--doctors"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-cities--city_id--doctors"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>city_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="city_id"                data-endpoint="GETapi-cities--city_id--doctors"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the city to filter doctors. Example: <code>1</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="GETapi-cities--city_id--doctors"
+               value="John Doe"
+               data-component="query">
+    <br>
+<p>optional Filter doctors by name. Example: <code>John Doe</code></p>
+            </div>
+                </form>
+
+                    <h2 id="doctor-GETapi-cities--city_id--doctors-specialty">Get a list of doctors by city and specialty.</h2>
+
+<p>
+</p>
+
+<p>This endpoint allows you to retrieve a list of doctors filtered by city and specialty.</p>
+
+<span id="example-requests-GETapi-cities--city_id--doctors-specialty">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/cities/1/doctors/specialty?specialty=Cardiologist" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/cities/1/doctors/specialty"
+);
+
+const params = {
+    "specialty": "Cardiologist",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-cities--city_id--doctors-specialty">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Doctors retrieved by specialty successfully&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Dr. John Doe&quot;,
+            &quot;specialty&quot;: &quot;Cardiologist&quot;,
+            &quot;city&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;New York&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Dr. David Brown&quot;,
+            &quot;specialty&quot;: &quot;Cardiologist&quot;,
+            &quot;city&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;New York&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: &quot;Failed to retrieve doctors by specialty. Please try again later.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-cities--city_id--doctors-specialty" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-cities--city_id--doctors-specialty"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-cities--city_id--doctors-specialty"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-cities--city_id--doctors-specialty" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-cities--city_id--doctors-specialty">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-cities--city_id--doctors-specialty" data-method="GET"
+      data-path="api/cities/{city_id}/doctors/specialty"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-cities--city_id--doctors-specialty', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-cities--city_id--doctors-specialty"
+                    onclick="tryItOut('GETapi-cities--city_id--doctors-specialty');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-cities--city_id--doctors-specialty"
+                    onclick="cancelTryOut('GETapi-cities--city_id--doctors-specialty');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-cities--city_id--doctors-specialty"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/cities/{city_id}/doctors/specialty</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-cities--city_id--doctors-specialty"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-cities--city_id--doctors-specialty"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>city_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="city_id"                data-endpoint="GETapi-cities--city_id--doctors-specialty"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the city to filter doctors. Example: <code>1</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>specialty</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="specialty"                data-endpoint="GETapi-cities--city_id--doctors-specialty"
+               value="Cardiologist"
+               data-component="query">
+    <br>
+<p>optional Filter doctors by specialty. Example: <code>Cardiologist</code></p>
+            </div>
+                </form>
+
+                    <h2 id="doctor-GETapi-doctors">Get a list of doctors by city.</h2>
+
+<p>
+</p>
+
+<p>This endpoint allows you to retrieve a list of doctors filtered by city.</p>
+
+<span id="example-requests-GETapi-doctors">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/doctors?name=John+Doe" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/doctors"
+);
+
+const params = {
+    "name": "John Doe",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-doctors">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Doctors retrieved successfully&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Dr. John Doe&quot;,
+            &quot;specialty&quot;: &quot;Cardiologist&quot;,
+            &quot;city&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;New York&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Dr. Jane Smith&quot;,
+            &quot;specialty&quot;: &quot;Dermatologist&quot;,
+            &quot;city&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;New York&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: &quot;Failed to retrieve doctors. Please try again later.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-doctors" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-doctors"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-doctors"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-doctors" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-doctors">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-doctors" data-method="GET"
+      data-path="api/doctors"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-doctors', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-doctors"
+                    onclick="tryItOut('GETapi-doctors');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-doctors"
+                    onclick="cancelTryOut('GETapi-doctors');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-doctors"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/doctors</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-doctors"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-doctors"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>city_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="city_id"                data-endpoint="GETapi-doctors"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the city to filter doctors. Example: <code>1</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="GETapi-doctors"
+               value="John Doe"
+               data-component="query">
+    <br>
+<p>optional Filter doctors by name. Example: <code>John Doe</code></p>
+            </div>
+                </form>
+
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-POSTapi-doctors-consultations">POST api/doctors/consultations</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-doctors-consultations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/doctors/consultations" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"doctor_id\": \"omnis\",
+    \"patient_id\": \"ex\",
+    \"date\": \"2025-01-26 19:48:11\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/doctors/consultations"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "doctor_id": "omnis",
+    "patient_id": "ex",
+    "date": "2025-01-26 19:48:11"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-doctors-consultations">
+</span>
+<span id="execution-results-POSTapi-doctors-consultations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-doctors-consultations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-doctors-consultations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-doctors-consultations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-doctors-consultations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-doctors-consultations" data-method="POST"
+      data-path="api/doctors/consultations"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-doctors-consultations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-doctors-consultations"
+                    onclick="tryItOut('POSTapi-doctors-consultations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-doctors-consultations"
+                    onclick="cancelTryOut('POSTapi-doctors-consultations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-doctors-consultations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/doctors/consultations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-doctors-consultations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-doctors-consultations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>doctor_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="doctor_id"                data-endpoint="POSTapi-doctors-consultations"
+               value="omnis"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the doctors table. Example: <code>omnis</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>patient_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="patient_id"                data-endpoint="POSTapi-doctors-consultations"
+               value="ex"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the patients table. Example: <code>ex</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date"                data-endpoint="POSTapi-doctors-consultations"
+               value="2025-01-26 19:48:11"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>Y-m-d H:i:s</code>. Example: <code>2025-01-26 19:48:11</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-consultations">POST api/consultations</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-consultations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/consultations" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"doctor_id\": \"sed\",
+    \"patient_id\": \"pariatur\",
+    \"date\": \"2025-01-26 19:48:11\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/consultations"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "doctor_id": "sed",
+    "patient_id": "pariatur",
+    "date": "2025-01-26 19:48:11"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-consultations">
+</span>
+<span id="execution-results-POSTapi-consultations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-consultations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-consultations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-consultations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-consultations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-consultations" data-method="POST"
+      data-path="api/consultations"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-consultations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-consultations"
+                    onclick="tryItOut('POSTapi-consultations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-consultations"
+                    onclick="cancelTryOut('POSTapi-consultations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-consultations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/consultations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-consultations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-consultations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>doctor_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="doctor_id"                data-endpoint="POSTapi-consultations"
+               value="sed"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the doctors table. Example: <code>sed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>patient_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="patient_id"                data-endpoint="POSTapi-consultations"
+               value="pariatur"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the patients table. Example: <code>pariatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date"                data-endpoint="POSTapi-consultations"
+               value="2025-01-26 19:48:11"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>Y-m-d H:i:s</code>. Example: <code>2025-01-26 19:48:11</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-PUTapi-consultations--consultation-">PUT api/consultations/{consultation}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-consultations--consultation-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/consultations/illum" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"doctor_id\": \"mollitia\",
+    \"patient_id\": \"totam\",
+    \"date\": \"2025-01-26 19:48:11\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/consultations/illum"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "doctor_id": "mollitia",
+    "patient_id": "totam",
+    "date": "2025-01-26 19:48:11"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-consultations--consultation-">
+</span>
+<span id="execution-results-PUTapi-consultations--consultation-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-consultations--consultation-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-consultations--consultation-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-consultations--consultation-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-consultations--consultation-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-consultations--consultation-" data-method="PUT"
+      data-path="api/consultations/{consultation}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-consultations--consultation-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-consultations--consultation-"
+                    onclick="tryItOut('PUTapi-consultations--consultation-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-consultations--consultation-"
+                    onclick="cancelTryOut('PUTapi-consultations--consultation-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-consultations--consultation-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/consultations/{consultation}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-consultations--consultation-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-consultations--consultation-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>consultation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="consultation"                data-endpoint="PUTapi-consultations--consultation-"
+               value="illum"
+               data-component="url">
+    <br>
+<p>The consultation. Example: <code>illum</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>doctor_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="doctor_id"                data-endpoint="PUTapi-consultations--consultation-"
+               value="mollitia"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the doctors table. Example: <code>mollitia</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>patient_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="patient_id"                data-endpoint="PUTapi-consultations--consultation-"
+               value="totam"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the patients table. Example: <code>totam</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date"                data-endpoint="PUTapi-consultations--consultation-"
+               value="2025-01-26 19:48:11"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>Y-m-d H:i:s</code>. Example: <code>2025-01-26 19:48:11</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-patients">POST api/patients</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-patients">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/patients" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"hqriosshcgplbnmwpzp\",
+    \"cpf\": \"ccwijhtnbp\",
+    \"cellphone\": \"stjnaqctkhocppmxx\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/patients"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "hqriosshcgplbnmwpzp",
+    "cpf": "ccwijhtnbp",
+    "cellphone": "stjnaqctkhocppmxx"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-patients">
+</span>
+<span id="execution-results-POSTapi-patients" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-patients"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-patients"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-patients" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-patients">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-patients" data-method="POST"
+      data-path="api/patients"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-patients', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-patients"
+                    onclick="tryItOut('POSTapi-patients');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-patients"
+                    onclick="cancelTryOut('POSTapi-patients');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-patients"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/patients</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-patients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-patients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-patients"
+               value="hqriosshcgplbnmwpzp"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>hqriosshcgplbnmwpzp</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cpf</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="cpf"                data-endpoint="POSTapi-patients"
+               value="ccwijhtnbp"
+               data-component="body">
+    <br>
+<p>Must not be greater than 14 characters. Example: <code>ccwijhtnbp</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cellphone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="cellphone"                data-endpoint="POSTapi-patients"
+               value="stjnaqctkhocppmxx"
+               data-component="body">
+    <br>
+<p>Must not be greater than 20 characters. Example: <code>stjnaqctkhocppmxx</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-PUTapi-patients--patient-">PUT api/patients/{patient}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-patients--patient-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/patients/eius" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"lknnikonjycis\",
+    \"cpf\": \"pwqvw\",
+    \"cellphone\": \"kvnkjy\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/patients/eius"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "lknnikonjycis",
+    "cpf": "pwqvw",
+    "cellphone": "kvnkjy"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-patients--patient-">
+</span>
+<span id="execution-results-PUTapi-patients--patient-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-patients--patient-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-patients--patient-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-patients--patient-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-patients--patient-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-patients--patient-" data-method="PUT"
+      data-path="api/patients/{patient}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-patients--patient-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-patients--patient-"
+                    onclick="tryItOut('PUTapi-patients--patient-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-patients--patient-"
+                    onclick="cancelTryOut('PUTapi-patients--patient-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-patients--patient-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/patients/{patient}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-patients--patient-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-patients--patient-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>patient</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="patient"                data-endpoint="PUTapi-patients--patient-"
+               value="eius"
+               data-component="url">
+    <br>
+<p>The patient. Example: <code>eius</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTapi-patients--patient-"
+               value="lknnikonjycis"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>lknnikonjycis</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cpf</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="cpf"                data-endpoint="PUTapi-patients--patient-"
+               value="pwqvw"
+               data-component="body">
+    <br>
+<p>Must not be greater than 14 characters. Example: <code>pwqvw</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cellphone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="cellphone"                data-endpoint="PUTapi-patients--patient-"
+               value="kvnkjy"
+               data-component="body">
+    <br>
+<p>Must not be greater than 20 characters. Example: <code>kvnkjy</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-patients--patient_id-">POST api/patients/{patient_id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-patients--patient_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/patients/qui" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"uasgqasifmlesqyos\",
+    \"cpf\": \"maiwecieaw\",
+    \"cellphone\": \"fgepmqoncvb\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/patients/qui"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "uasgqasifmlesqyos",
+    "cpf": "maiwecieaw",
+    "cellphone": "fgepmqoncvb"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-patients--patient_id-">
+</span>
+<span id="execution-results-POSTapi-patients--patient_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-patients--patient_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-patients--patient_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-patients--patient_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-patients--patient_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-patients--patient_id-" data-method="POST"
+      data-path="api/patients/{patient_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-patients--patient_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-patients--patient_id-"
+                    onclick="tryItOut('POSTapi-patients--patient_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-patients--patient_id-"
+                    onclick="cancelTryOut('POSTapi-patients--patient_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-patients--patient_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/patients/{patient_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-patients--patient_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-patients--patient_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>patient_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="patient_id"                data-endpoint="POSTapi-patients--patient_id-"
+               value="qui"
+               data-component="url">
+    <br>
+<p>The ID of the patient. Example: <code>qui</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-patients--patient_id-"
+               value="uasgqasifmlesqyos"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>uasgqasifmlesqyos</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cpf</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="cpf"                data-endpoint="POSTapi-patients--patient_id-"
+               value="maiwecieaw"
+               data-component="body">
+    <br>
+<p>Must not be greater than 14 characters. Example: <code>maiwecieaw</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cellphone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="cellphone"                data-endpoint="POSTapi-patients--patient_id-"
+               value="fgepmqoncvb"
+               data-component="body">
+    <br>
+<p>Must not be greater than 20 characters. Example: <code>fgepmqoncvb</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-cities">GET api/cities</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-cities">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/cities" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/cities"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-cities">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: &quot;success&quot;,
+    &quot;message&quot;: &quot;Cities retrieved successfully&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 189,
+            &quot;name&quot;: &quot;Alessandrofort&quot;,
+            &quot;state&quot;: &quot;Missouri&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 149,
+                    &quot;name&quot;: &quot;Miss Pink Halvorson&quot;,
+                    &quot;specialty&quot;: &quot;mollitia&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 32,
+            &quot;name&quot;: &quot;Antonioport&quot;,
+            &quot;state&quot;: &quot;Colorado&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 12,
+                    &quot;name&quot;: &quot;Prof Ryan Shields I&quot;,
+                    &quot;specialty&quot;: &quot;voluptatem&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 100,
+            &quot;name&quot;: &quot;Athenachester&quot;,
+            &quot;state&quot;: &quot;Utah&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 70,
+                    &quot;name&quot;: &quot;Nayeli Shanahan III&quot;,
+                    &quot;specialty&quot;: &quot;quas&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 33,
+            &quot;name&quot;: &quot;Aufderharmouth&quot;,
+            &quot;state&quot;: &quot;Hawaii&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 13,
+                    &quot;name&quot;: &quot;Fern Lynch&quot;,
+                    &quot;specialty&quot;: &quot;dolore&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 108,
+            &quot;name&quot;: &quot;Balistrerifurt&quot;,
+            &quot;state&quot;: &quot;Idaho&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 78,
+                    &quot;name&quot;: &quot;Ms Alia Christiansen IV&quot;,
+                    &quot;specialty&quot;: &quot;doloribus&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 63,
+            &quot;name&quot;: &quot;Bauchmouth&quot;,
+            &quot;state&quot;: &quot;Nevada&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 43,
+                    &quot;name&quot;: &quot;Miss Lenora Ferry II&quot;,
+                    &quot;specialty&quot;: &quot;molestiae&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 105,
+            &quot;name&quot;: &quot;Bentonhaven&quot;,
+            &quot;state&quot;: &quot;Maine&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 75,
+                    &quot;name&quot;: &quot;Mr Lucio Russel&quot;,
+                    &quot;specialty&quot;: &quot;ea&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 135,
+            &quot;name&quot;: &quot;Bethanyland&quot;,
+            &quot;state&quot;: &quot;Wyoming&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 105,
+                    &quot;name&quot;: &quot;Alanna DAmore&quot;,
+                    &quot;specialty&quot;: &quot;voluptas&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 143,
+            &quot;name&quot;: &quot;Bonitaview&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 113,
+                    &quot;name&quot;: &quot;Paula Nienow&quot;,
+                    &quot;specialty&quot;: &quot;dolore&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 27,
+            &quot;name&quot;: &quot;Braunmouth&quot;,
+            &quot;state&quot;: &quot;North Dakota&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 74,
+            &quot;name&quot;: &quot;Buckridgebury&quot;,
+            &quot;state&quot;: &quot;Hawaii&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 166,
+            &quot;name&quot;: &quot;Carolebury&quot;,
+            &quot;state&quot;: &quot;Alaska&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 126,
+                    &quot;name&quot;: &quot;Mauricio Mueller&quot;,
+                    &quot;specialty&quot;: &quot;aut&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 129,
+            &quot;name&quot;: &quot;Caseyfurt&quot;,
+            &quot;state&quot;: &quot;Mississippi&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 99,
+                    &quot;name&quot;: &quot;Moses Treutel&quot;,
+                    &quot;specialty&quot;: &quot;ad&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 146,
+            &quot;name&quot;: &quot;Casperside&quot;,
+            &quot;state&quot;: &quot;Pennsylvania&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 116,
+                    &quot;name&quot;: &quot;Wilbert Kling&quot;,
+                    &quot;specialty&quot;: &quot;consectetur&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 125,
+            &quot;name&quot;: &quot;Celestinoton&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 95,
+                    &quot;name&quot;: &quot;Santina Vandervort&quot;,
+                    &quot;specialty&quot;: &quot;eos&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 148,
+            &quot;name&quot;: &quot;Christaland&quot;,
+            &quot;state&quot;: &quot;Arizona&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 118,
+                    &quot;name&quot;: &quot;Coy Koch&quot;,
+                    &quot;specialty&quot;: &quot;eos&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 133,
+            &quot;name&quot;: &quot;Cristview&quot;,
+            &quot;state&quot;: &quot;North Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 103,
+                    &quot;name&quot;: &quot;Scottie Franecki&quot;,
+                    &quot;specialty&quot;: &quot;rerum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 22,
+            &quot;name&quot;: &quot;Dantefurt&quot;,
+            &quot;state&quot;: &quot;Pennsylvania&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 37,
+            &quot;name&quot;: &quot;Daphneeshire&quot;,
+            &quot;state&quot;: &quot;North Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 17,
+                    &quot;name&quot;: &quot;Lauryn Ziemann&quot;,
+                    &quot;specialty&quot;: &quot;rerum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 87,
+            &quot;name&quot;: &quot;Darrentown&quot;,
+            &quot;state&quot;: &quot;North Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 57,
+                    &quot;name&quot;: &quot;Orlando McClure&quot;,
+                    &quot;specialty&quot;: &quot;ut&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 15,
+            &quot;name&quot;: &quot;Daughertytown&quot;,
+            &quot;state&quot;: &quot;North Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Prof Beau Schultz&quot;,
+                    &quot;specialty&quot;: &quot;porro&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 178,
+            &quot;name&quot;: &quot;Deckowborough&quot;,
+            &quot;state&quot;: &quot;Montana&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 138,
+                    &quot;name&quot;: &quot;Dane Prosacco&quot;,
+                    &quot;specialty&quot;: &quot;aut&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 123,
+            &quot;name&quot;: &quot;Deontefurt&quot;,
+            &quot;state&quot;: &quot;California&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 93,
+                    &quot;name&quot;: &quot;Presley Balistreri&quot;,
+                    &quot;specialty&quot;: &quot;ipsa&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 18,
+            &quot;name&quot;: &quot;Devontehaven&quot;,
+            &quot;state&quot;: &quot;Illinois&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 8,
+                    &quot;name&quot;: &quot;Liana Cronin&quot;,
+                    &quot;specialty&quot;: &quot;perspiciatis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 38,
+            &quot;name&quot;: &quot;Douglasstad&quot;,
+            &quot;state&quot;: &quot;Arizona&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 18,
+                    &quot;name&quot;: &quot;Bennie Cassin&quot;,
+                    &quot;specialty&quot;: &quot;ea&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 201,
+            &quot;name&quot;: &quot;East Adeliamouth&quot;,
+            &quot;state&quot;: &quot;Rhode Island&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 161,
+                    &quot;name&quot;: &quot;Dolly Barton&quot;,
+                    &quot;specialty&quot;: &quot;molestiae&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 191,
+            &quot;name&quot;: &quot;East Aidatown&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 151,
+                    &quot;name&quot;: &quot;Josiane Schowalter&quot;,
+                    &quot;specialty&quot;: &quot;amet&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 49,
+            &quot;name&quot;: &quot;East Bria&quot;,
+            &quot;state&quot;: &quot;New Hampshire&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 29,
+                    &quot;name&quot;: &quot;Cruz Miller&quot;,
+                    &quot;specialty&quot;: &quot;eos&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 54,
+            &quot;name&quot;: &quot;East Cletushaven&quot;,
+            &quot;state&quot;: &quot;New Jersey&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 34,
+                    &quot;name&quot;: &quot;Dr Cordell Jakubowski&quot;,
+                    &quot;specialty&quot;: &quot;aut&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 62,
+            &quot;name&quot;: &quot;East Enolachester&quot;,
+            &quot;state&quot;: &quot;North Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 42,
+                    &quot;name&quot;: &quot;Emily Robel&quot;,
+                    &quot;specialty&quot;: &quot;facere&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 86,
+            &quot;name&quot;: &quot;East Janis&quot;,
+            &quot;state&quot;: &quot;New Mexico&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 56,
+                    &quot;name&quot;: &quot;Jerrell Anderson&quot;,
+                    &quot;specialty&quot;: &quot;ratione&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 69,
+            &quot;name&quot;: &quot;East Katharinaland&quot;,
+            &quot;state&quot;: &quot;Washington&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 49,
+                    &quot;name&quot;: &quot;Virginia Williamson&quot;,
+                    &quot;specialty&quot;: &quot;ex&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 103,
+            &quot;name&quot;: &quot;East Lloyd&quot;,
+            &quot;state&quot;: &quot;Alabama&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 73,
+                    &quot;name&quot;: &quot;Antonette Hermann&quot;,
+                    &quot;specialty&quot;: &quot;laudantium&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 119,
+            &quot;name&quot;: &quot;East Marlene&quot;,
+            &quot;state&quot;: &quot;Nevada&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 89,
+                    &quot;name&quot;: &quot;Mrs Arlie Breitenberg&quot;,
+                    &quot;specialty&quot;: &quot;ad&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 89,
+            &quot;name&quot;: &quot;East Micah&quot;,
+            &quot;state&quot;: &quot;Georgia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 59,
+                    &quot;name&quot;: &quot;Wilson Johnson II&quot;,
+                    &quot;specialty&quot;: &quot;fugit&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 104,
+            &quot;name&quot;: &quot;East Mossie&quot;,
+            &quot;state&quot;: &quot;Ohio&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 74,
+                    &quot;name&quot;: &quot;Tia Monahan&quot;,
+                    &quot;specialty&quot;: &quot;quia&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 88,
+            &quot;name&quot;: &quot;East Precious&quot;,
+            &quot;state&quot;: &quot;District of Columbia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 58,
+                    &quot;name&quot;: &quot;Modesto Bayer III&quot;,
+                    &quot;specialty&quot;: &quot;delectus&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 187,
+            &quot;name&quot;: &quot;East Sabrynaville&quot;,
+            &quot;state&quot;: &quot;Oklahoma&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 147,
+                    &quot;name&quot;: &quot;Dr Coy Kunde DVM&quot;,
+                    &quot;specialty&quot;: &quot;blanditiis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 94,
+            &quot;name&quot;: &quot;East Scottyport&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 64,
+                    &quot;name&quot;: &quot;Arnold Connelly&quot;,
+                    &quot;specialty&quot;: &quot;cum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 152,
+            &quot;name&quot;: &quot;East Susanatown&quot;,
+            &quot;state&quot;: &quot;Indiana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 110,
+            &quot;name&quot;: &quot;East Tania&quot;,
+            &quot;state&quot;: &quot;District of Columbia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 80,
+                    &quot;name&quot;: &quot;Kaylie Simonis&quot;,
+                    &quot;specialty&quot;: &quot;beatae&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 41,
+            &quot;name&quot;: &quot;East Yasmin&quot;,
+            &quot;state&quot;: &quot;California&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 21,
+                    &quot;name&quot;: &quot;Tanner Ondricka&quot;,
+                    &quot;specialty&quot;: &quot;dignissimos&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 193,
+            &quot;name&quot;: &quot;Eichmannshire&quot;,
+            &quot;state&quot;: &quot;Alabama&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 153,
+                    &quot;name&quot;: &quot;Mrs Amya Langworth IV&quot;,
+                    &quot;specialty&quot;: &quot;perspiciatis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 128,
+            &quot;name&quot;: &quot;Eleanoraborough&quot;,
+            &quot;state&quot;: &quot;Ohio&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 98,
+                    &quot;name&quot;: &quot;Adelia Anderson&quot;,
+                    &quot;specialty&quot;: &quot;architecto&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 115,
+            &quot;name&quot;: &quot;Emilietown&quot;,
+            &quot;state&quot;: &quot;Mississippi&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 85,
+                    &quot;name&quot;: &quot;Ms Lorna Schmidt&quot;,
+                    &quot;specialty&quot;: &quot;omnis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 177,
+            &quot;name&quot;: &quot;Emmychester&quot;,
+            &quot;state&quot;: &quot;South Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 137,
+                    &quot;name&quot;: &quot;Izabella Schroeder&quot;,
+                    &quot;specialty&quot;: &quot;quia&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 17,
+            &quot;name&quot;: &quot;Erdmanhaven&quot;,
+            &quot;state&quot;: &quot;West Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Ahmad Watsica&quot;,
+                    &quot;specialty&quot;: &quot;vitae&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 102,
+            &quot;name&quot;: &quot;Fayville&quot;,
+            &quot;state&quot;: &quot;Wyoming&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 72,
+                    &quot;name&quot;: &quot;Simeon Becker&quot;,
+                    &quot;specialty&quot;: &quot;aspernatur&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 141,
+            &quot;name&quot;: &quot;Feilview&quot;,
+            &quot;state&quot;: &quot;New Hampshire&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 111,
+                    &quot;name&quot;: &quot;Elinor Reinger&quot;,
+                    &quot;specialty&quot;: &quot;consequatur&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 168,
+            &quot;name&quot;: &quot;Felicialand&quot;,
+            &quot;state&quot;: &quot;Florida&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 128,
+                    &quot;name&quot;: &quot;Dedric Davis&quot;,
+                    &quot;specialty&quot;: &quot;impedit&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 188,
+            &quot;name&quot;: &quot;Finnton&quot;,
+            &quot;state&quot;: &quot;Michigan&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 148,
+                    &quot;name&quot;: &quot;Westley Langworth&quot;,
+                    &quot;specialty&quot;: &quot;dolor&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 126,
+            &quot;name&quot;: &quot;Forrestville&quot;,
+            &quot;state&quot;: &quot;Illinois&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 96,
+                    &quot;name&quot;: &quot;William Torphy&quot;,
+                    &quot;specialty&quot;: &quot;dolor&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 14,
+            &quot;name&quot;: &quot;Gavinshire&quot;,
+            &quot;state&quot;: &quot;Massachusetts&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Prof Seamus Bailey&quot;,
+                    &quot;specialty&quot;: &quot;accusantium&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 43,
+            &quot;name&quot;: &quot;Genovevaville&quot;,
+            &quot;state&quot;: &quot;Pennsylvania&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 23,
+                    &quot;name&quot;: &quot;Tod Keebler&quot;,
+                    &quot;specialty&quot;: &quot;impedit&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;Goodwinside&quot;,
+            &quot;state&quot;: &quot;Pennsylvania&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 34,
+            &quot;name&quot;: &quot;Gracielafurt&quot;,
+            &quot;state&quot;: &quot;Louisiana&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 14,
+                    &quot;name&quot;: &quot;Jameson Zboncak&quot;,
+                    &quot;specialty&quot;: &quot;officiis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 176,
+            &quot;name&quot;: &quot;Gutkowskifort&quot;,
+            &quot;state&quot;: &quot;Wyoming&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 136,
+                    &quot;name&quot;: &quot;Joyce Brakus&quot;,
+                    &quot;specialty&quot;: &quot;porro&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 122,
+            &quot;name&quot;: &quot;Haleytown&quot;,
+            &quot;state&quot;: &quot;Nebraska&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 92,
+                    &quot;name&quot;: &quot;Dr Payton Altenwerth&quot;,
+                    &quot;specialty&quot;: &quot;molestias&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Harrisbury&quot;,
+            &quot;state&quot;: &quot;Mississippi&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 68,
+            &quot;name&quot;: &quot;Hegmannshire&quot;,
+            &quot;state&quot;: &quot;Colorado&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 48,
+                    &quot;name&quot;: &quot;Madelyn Emard III&quot;,
+                    &quot;specialty&quot;: &quot;amet&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 26,
+            &quot;name&quot;: &quot;Hettiehaven&quot;,
+            &quot;state&quot;: &quot;Colorado&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 99,
+            &quot;name&quot;: &quot;Hickleland&quot;,
+            &quot;state&quot;: &quot;Nebraska&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 69,
+                    &quot;name&quot;: &quot;Jessika Goldner&quot;,
+                    &quot;specialty&quot;: &quot;asperiores&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Houstonmouth&quot;,
+            &quot;state&quot;: &quot;Louisiana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 127,
+            &quot;name&quot;: &quot;Howellside&quot;,
+            &quot;state&quot;: &quot;North Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 97,
+                    &quot;name&quot;: &quot;Demetris Balistreri&quot;,
+                    &quot;specialty&quot;: &quot;unde&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 159,
+            &quot;name&quot;: &quot;Javierfort&quot;,
+            &quot;state&quot;: &quot;Alabama&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 151,
+            &quot;name&quot;: &quot;Jaydonfort&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 121,
+                    &quot;name&quot;: &quot;Dr Daphney Romaguera PhD&quot;,
+                    &quot;specialty&quot;: &quot;sunt&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 117,
+            &quot;name&quot;: &quot;Jonesside&quot;,
+            &quot;state&quot;: &quot;Kansas&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 87,
+                    &quot;name&quot;: &quot;Reagan Rau&quot;,
+                    &quot;specialty&quot;: &quot;qui&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 52,
+            &quot;name&quot;: &quot;Jordonfort&quot;,
+            &quot;state&quot;: &quot;Hawaii&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 32,
+                    &quot;name&quot;: &quot;Alice Kunde&quot;,
+                    &quot;specialty&quot;: &quot;cum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 190,
+            &quot;name&quot;: &quot;Julianland&quot;,
+            &quot;state&quot;: &quot;Rhode Island&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 150,
+                    &quot;name&quot;: &quot;Emmet Rosenbaum&quot;,
+                    &quot;specialty&quot;: &quot;distinctio&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 107,
+            &quot;name&quot;: &quot;Julieborough&quot;,
+            &quot;state&quot;: &quot;New York&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 77,
+                    &quot;name&quot;: &quot;Joy Hoppe&quot;,
+                    &quot;specialty&quot;: &quot;harum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 154,
+            &quot;name&quot;: &quot;Kubport&quot;,
+            &quot;state&quot;: &quot;Florida&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 84,
+            &quot;name&quot;: &quot;Lake Delilah&quot;,
+            &quot;state&quot;: &quot;Alabama&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 54,
+                    &quot;name&quot;: &quot;Lorine Mann PhD&quot;,
+                    &quot;specialty&quot;: &quot;aut&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 121,
+            &quot;name&quot;: &quot;Lake Elizastad&quot;,
+            &quot;state&quot;: &quot;Mississippi&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 91,
+                    &quot;name&quot;: &quot;Christopher Abshire DDS&quot;,
+                    &quot;specialty&quot;: &quot;quis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;name&quot;: &quot;Lake Fredport&quot;,
+            &quot;state&quot;: &quot;Massachusetts&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 66,
+            &quot;name&quot;: &quot;Lake Hildaberg&quot;,
+            &quot;state&quot;: &quot;South Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 46,
+                    &quot;name&quot;: &quot;Mrs Elisha Balistreri&quot;,
+                    &quot;specialty&quot;: &quot;qui&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 42,
+            &quot;name&quot;: &quot;Lake Isaimouth&quot;,
+            &quot;state&quot;: &quot;Iowa&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 22,
+                    &quot;name&quot;: &quot;Stefanie Miller DDS&quot;,
+                    &quot;specialty&quot;: &quot;qui&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 72,
+            &quot;name&quot;: &quot;Lake Nayeli&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 13,
+            &quot;name&quot;: &quot;Lake Pattiechester&quot;,
+            &quot;state&quot;: &quot;Alabama&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dr Virgil Lynch&quot;,
+                    &quot;specialty&quot;: &quot;magni&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 185,
+            &quot;name&quot;: &quot;Lake Queenieborough&quot;,
+            &quot;state&quot;: &quot;Utah&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 145,
+                    &quot;name&quot;: &quot;Alexanne McKenzie&quot;,
+                    &quot;specialty&quot;: &quot;qui&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 156,
+            &quot;name&quot;: &quot;Lake Reymouth&quot;,
+            &quot;state&quot;: &quot;Pennsylvania&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 139,
+            &quot;name&quot;: &quot;Lake Shanny&quot;,
+            &quot;state&quot;: &quot;New Hampshire&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 109,
+                    &quot;name&quot;: &quot;Helen Price&quot;,
+                    &quot;specialty&quot;: &quot;ab&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 95,
+            &quot;name&quot;: &quot;Lake Skylarport&quot;,
+            &quot;state&quot;: &quot;Hawaii&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 65,
+                    &quot;name&quot;: &quot;Andrew Wilderman III&quot;,
+                    &quot;specialty&quot;: &quot;iste&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 70,
+            &quot;name&quot;: &quot;Lake Velmamouth&quot;,
+            &quot;state&quot;: &quot;Georgia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 50,
+                    &quot;name&quot;: &quot;Makayla Adams&quot;,
+                    &quot;specialty&quot;: &quot;tenetur&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 180,
+            &quot;name&quot;: &quot;Langbury&quot;,
+            &quot;state&quot;: &quot;Wisconsin&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 140,
+                    &quot;name&quot;: &quot;Alta Sawayn&quot;,
+                    &quot;specialty&quot;: &quot;voluptas&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 164,
+            &quot;name&quot;: &quot;Laurineport&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 124,
+                    &quot;name&quot;: &quot;Prof Jo Spinka I&quot;,
+                    &quot;specialty&quot;: &quot;sint&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 124,
+            &quot;name&quot;: &quot;Leannemouth&quot;,
+            &quot;state&quot;: &quot;New Mexico&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 94,
+                    &quot;name&quot;: &quot;Richie Quigley&quot;,
+                    &quot;specialty&quot;: &quot;qui&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 67,
+            &quot;name&quot;: &quot;Lockmanmouth&quot;,
+            &quot;state&quot;: &quot;District of Columbia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 47,
+                    &quot;name&quot;: &quot;Savanah Mraz&quot;,
+                    &quot;specialty&quot;: &quot;consectetur&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 46,
+            &quot;name&quot;: &quot;Lucioberg&quot;,
+            &quot;state&quot;: &quot;Delaware&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 26,
+                    &quot;name&quot;: &quot;Valentina Ward&quot;,
+                    &quot;specialty&quot;: &quot;quia&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 114,
+            &quot;name&quot;: &quot;Lylachester&quot;,
+            &quot;state&quot;: &quot;Arkansas&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 84,
+                    &quot;name&quot;: &quot;Miss Amira Walsh III&quot;,
+                    &quot;specialty&quot;: &quot;dolor&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Majorville&quot;,
+            &quot;state&quot;: &quot;Louisiana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 97,
+            &quot;name&quot;: &quot;Marcochester&quot;,
+            &quot;state&quot;: &quot;Colorado&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 67,
+                    &quot;name&quot;: &quot;Dandre Miller&quot;,
+                    &quot;specialty&quot;: &quot;et&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 162,
+            &quot;name&quot;: &quot;Mariettamouth&quot;,
+            &quot;state&quot;: &quot;Missouri&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 122,
+                    &quot;name&quot;: &quot;Justina Stamm&quot;,
+                    &quot;specialty&quot;: &quot;beatae&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 161,
+            &quot;name&quot;: &quot;Marinafurt&quot;,
+            &quot;state&quot;: &quot;Alabama&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 106,
+            &quot;name&quot;: &quot;Maudburgh&quot;,
+            &quot;state&quot;: &quot;Colorado&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 76,
+                    &quot;name&quot;: &quot;Reed McKenzie&quot;,
+                    &quot;specialty&quot;: &quot;ex&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 59,
+            &quot;name&quot;: &quot;McClureborough&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 39,
+                    &quot;name&quot;: &quot;Dr Eliseo Lakin&quot;,
+                    &quot;specialty&quot;: &quot;similique&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 198,
+            &quot;name&quot;: &quot;Moenbury&quot;,
+            &quot;state&quot;: &quot;North Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 158,
+                    &quot;name&quot;: &quot;Yvonne Mitchell&quot;,
+                    &quot;specialty&quot;: &quot;consequuntur&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 75,
+            &quot;name&quot;: &quot;Moenview&quot;,
+            &quot;state&quot;: &quot;Minnesota&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 109,
+            &quot;name&quot;: &quot;Monahanborough&quot;,
+            &quot;state&quot;: &quot;Wyoming&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 79,
+                    &quot;name&quot;: &quot;Chet Swift Sr&quot;,
+                    &quot;specialty&quot;: &quot;et&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 21,
+            &quot;name&quot;: &quot;Naomiebury&quot;,
+            &quot;state&quot;: &quot;Missouri&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 11,
+                    &quot;name&quot;: &quot;Ofelia Medhurst&quot;,
+                    &quot;specialty&quot;: &quot;possimus&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 175,
+            &quot;name&quot;: &quot;New Araceli&quot;,
+            &quot;state&quot;: &quot;Pennsylvania&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 135,
+                    &quot;name&quot;: &quot;Aisha Wisoky&quot;,
+                    &quot;specialty&quot;: &quot;rerum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 140,
+            &quot;name&quot;: &quot;New Bartholometon&quot;,
+            &quot;state&quot;: &quot;North Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 110,
+                    &quot;name&quot;: &quot;Napoleon Wyman&quot;,
+                    &quot;specialty&quot;: &quot;aut&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 51,
+            &quot;name&quot;: &quot;New Chloeport&quot;,
+            &quot;state&quot;: &quot;Washington&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 31,
+                    &quot;name&quot;: &quot;Sheila Oberbrunner&quot;,
+                    &quot;specialty&quot;: &quot;qui&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 80,
+            &quot;name&quot;: &quot;New Cordia&quot;,
+            &quot;state&quot;: &quot;Montana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 150,
+            &quot;name&quot;: &quot;New Deionchester&quot;,
+            &quot;state&quot;: &quot;Louisiana&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 120,
+                    &quot;name&quot;: &quot;Prof Taryn Keeling&quot;,
+                    &quot;specialty&quot;: &quot;occaecati&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 98,
+            &quot;name&quot;: &quot;New Jonshire&quot;,
+            &quot;state&quot;: &quot;Montana&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 68,
+                    &quot;name&quot;: &quot;Miss Viviane Bradtke Sr&quot;,
+                    &quot;specialty&quot;: &quot;numquam&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 78,
+            &quot;name&quot;: &quot;New Julian&quot;,
+            &quot;state&quot;: &quot;Hawaii&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 147,
+            &quot;name&quot;: &quot;New Justice&quot;,
+            &quot;state&quot;: &quot;Kansas&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 117,
+                    &quot;name&quot;: &quot;Ivah West MD&quot;,
+                    &quot;specialty&quot;: &quot;eum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 65,
+            &quot;name&quot;: &quot;New Madalynland&quot;,
+            &quot;state&quot;: &quot;Georgia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 45,
+                    &quot;name&quot;: &quot;Chauncey Terry IV&quot;,
+                    &quot;specialty&quot;: &quot;voluptatem&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 169,
+            &quot;name&quot;: &quot;New Mario&quot;,
+            &quot;state&quot;: &quot;South Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 129,
+                    &quot;name&quot;: &quot;Shane Ratke&quot;,
+                    &quot;specialty&quot;: &quot;aperiam&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 172,
+            &quot;name&quot;: &quot;New Rosemaryside&quot;,
+            &quot;state&quot;: &quot;Wyoming&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 132,
+                    &quot;name&quot;: &quot;Demond Hirthe II&quot;,
+                    &quot;specialty&quot;: &quot;amet&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 111,
+            &quot;name&quot;: &quot;New Theodoraside&quot;,
+            &quot;state&quot;: &quot;South Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 81,
+                    &quot;name&quot;: &quot;Ruthie Beahan&quot;,
+                    &quot;specialty&quot;: &quot;voluptate&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;name&quot;: &quot;Nikolauschester&quot;,
+            &quot;state&quot;: &quot;Ohio&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;Brant Murphy&quot;,
+                    &quot;specialty&quot;: &quot;illum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 134,
+            &quot;name&quot;: &quot;Nolanberg&quot;,
+            &quot;state&quot;: &quot;Oregon&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 104,
+                    &quot;name&quot;: &quot;Veda Mraz&quot;,
+                    &quot;specialty&quot;: &quot;veniam&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 149,
+            &quot;name&quot;: &quot;Nolanstad&quot;,
+            &quot;state&quot;: &quot;Indiana&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 119,
+                    &quot;name&quot;: &quot;Kaela Kassulke&quot;,
+                    &quot;specialty&quot;: &quot;similique&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 112,
+            &quot;name&quot;: &quot;North Adellaview&quot;,
+            &quot;state&quot;: &quot;Massachusetts&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 82,
+                    &quot;name&quot;: &quot;Salvatore Shields&quot;,
+                    &quot;specialty&quot;: &quot;quaerat&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 130,
+            &quot;name&quot;: &quot;North Angelhaven&quot;,
+            &quot;state&quot;: &quot;Wyoming&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 100,
+                    &quot;name&quot;: &quot;Dr Norbert Satterfield MD&quot;,
+                    &quot;specialty&quot;: &quot;ad&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 85,
+            &quot;name&quot;: &quot;North Aurore&quot;,
+            &quot;state&quot;: &quot;West Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 55,
+                    &quot;name&quot;: &quot;Dr Lela Barrows&quot;,
+                    &quot;specialty&quot;: &quot;modi&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 44,
+            &quot;name&quot;: &quot;North Bennie&quot;,
+            &quot;state&quot;: &quot;Tennessee&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 24,
+                    &quot;name&quot;: &quot;Fern Osinski&quot;,
+                    &quot;specialty&quot;: &quot;minima&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 16,
+            &quot;name&quot;: &quot;North Cassie&quot;,
+            &quot;state&quot;: &quot;Louisiana&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Lennie Huels&quot;,
+                    &quot;specialty&quot;: &quot;laborum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 183,
+            &quot;name&quot;: &quot;North Colemanside&quot;,
+            &quot;state&quot;: &quot;Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 143,
+                    &quot;name&quot;: &quot;Prof Hassan Hermiston II&quot;,
+                    &quot;specialty&quot;: &quot;rerum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 142,
+            &quot;name&quot;: &quot;North Crawfordmouth&quot;,
+            &quot;state&quot;: &quot;Vermont&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 112,
+                    &quot;name&quot;: &quot;Toy Senger Sr&quot;,
+                    &quot;specialty&quot;: &quot;necessitatibus&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 96,
+            &quot;name&quot;: &quot;North Josianne&quot;,
+            &quot;state&quot;: &quot;Arizona&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 66,
+                    &quot;name&quot;: &quot;Prof Benny Upton&quot;,
+                    &quot;specialty&quot;: &quot;sed&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 50,
+            &quot;name&quot;: &quot;North Kristin&quot;,
+            &quot;state&quot;: &quot;Vermont&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 30,
+                    &quot;name&quot;: &quot;Erick Zemlak Sr&quot;,
+                    &quot;specialty&quot;: &quot;voluptate&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 131,
+            &quot;name&quot;: &quot;North Nikkiview&quot;,
+            &quot;state&quot;: &quot;Alaska&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 101,
+                    &quot;name&quot;: &quot;Dr Amalia Murray Jr&quot;,
+                    &quot;specialty&quot;: &quot;quae&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 90,
+            &quot;name&quot;: &quot;North Novaville&quot;,
+            &quot;state&quot;: &quot;District of Columbia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 60,
+                    &quot;name&quot;: &quot;Ignacio Schmidt&quot;,
+                    &quot;specialty&quot;: &quot;quo&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 153,
+            &quot;name&quot;: &quot;North Odie&quot;,
+            &quot;state&quot;: &quot;Arkansas&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 81,
+            &quot;name&quot;: &quot;North Rhianna&quot;,
+            &quot;state&quot;: &quot;Kentucky&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 23,
+            &quot;name&quot;: &quot;North Sam&quot;,
+            &quot;state&quot;: &quot;New York&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 173,
+            &quot;name&quot;: &quot;North Stevie&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 133,
+                    &quot;name&quot;: &quot;Mr Cale Rowe V&quot;,
+                    &quot;specialty&quot;: &quot;nihil&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 35,
+            &quot;name&quot;: &quot;North Tretown&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 15,
+                    &quot;name&quot;: &quot;Josephine Adams&quot;,
+                    &quot;specialty&quot;: &quot;laboriosam&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 64,
+            &quot;name&quot;: &quot;Ocieport&quot;,
+            &quot;state&quot;: &quot;Vermont&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 44,
+                    &quot;name&quot;: &quot;Clark Abbott&quot;,
+                    &quot;specialty&quot;: &quot;dolorem&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 200,
+            &quot;name&quot;: &quot;Pablomouth&quot;,
+            &quot;state&quot;: &quot;Ohio&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 160,
+                    &quot;name&quot;: &quot;Wellington Moen IV&quot;,
+                    &quot;specialty&quot;: &quot;nihil&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 45,
+            &quot;name&quot;: &quot;Pagacmouth&quot;,
+            &quot;state&quot;: &quot;Illinois&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 25,
+                    &quot;name&quot;: &quot;Mr Narciso Metz&quot;,
+                    &quot;specialty&quot;: &quot;voluptatibus&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 120,
+            &quot;name&quot;: &quot;Port Jesus&quot;,
+            &quot;state&quot;: &quot;Massachusetts&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 90,
+                    &quot;name&quot;: &quot;Prof Amira Spencer&quot;,
+                    &quot;specialty&quot;: &quot;rem&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 55,
+            &quot;name&quot;: &quot;Port Karli&quot;,
+            &quot;state&quot;: &quot;California&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 35,
+                    &quot;name&quot;: &quot;Prof Dustin Rempel Sr&quot;,
+                    &quot;specialty&quot;: &quot;quia&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 53,
+            &quot;name&quot;: &quot;Port Kian&quot;,
+            &quot;state&quot;: &quot;Wyoming&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 33,
+                    &quot;name&quot;: &quot;Savanah Boyle&quot;,
+                    &quot;specialty&quot;: &quot;omnis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 113,
+            &quot;name&quot;: &quot;Port Leon&quot;,
+            &quot;state&quot;: &quot;Louisiana&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 83,
+                    &quot;name&quot;: &quot;Alvera Pollich&quot;,
+                    &quot;specialty&quot;: &quot;explicabo&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 165,
+            &quot;name&quot;: &quot;Port Lonniemouth&quot;,
+            &quot;state&quot;: &quot;Tennessee&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 125,
+                    &quot;name&quot;: &quot;Elijah Kassulke&quot;,
+                    &quot;specialty&quot;: &quot;corporis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 199,
+            &quot;name&quot;: &quot;Port Marina&quot;,
+            &quot;state&quot;: &quot;Michigan&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 159,
+                    &quot;name&quot;: &quot;Mitchell Torp&quot;,
+                    &quot;specialty&quot;: &quot;debitis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 118,
+            &quot;name&quot;: &quot;Port Nedra&quot;,
+            &quot;state&quot;: &quot;South Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 88,
+                    &quot;name&quot;: &quot;Jerrold Parisian&quot;,
+                    &quot;specialty&quot;: &quot;perferendis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 101,
+            &quot;name&quot;: &quot;Port Russ&quot;,
+            &quot;state&quot;: &quot;Utah&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 71,
+                    &quot;name&quot;: &quot;Pablo Ullrich&quot;,
+                    &quot;specialty&quot;: &quot;voluptatibus&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 60,
+            &quot;name&quot;: &quot;Port Tina&quot;,
+            &quot;state&quot;: &quot;Massachusetts&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 40,
+                    &quot;name&quot;: &quot;Dulce Padberg&quot;,
+                    &quot;specialty&quot;: &quot;qui&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 93,
+            &quot;name&quot;: &quot;Port Tommieshire&quot;,
+            &quot;state&quot;: &quot;Mississippi&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 63,
+                    &quot;name&quot;: &quot;Jovany Gulgowski&quot;,
+                    &quot;specialty&quot;: &quot;veritatis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 76,
+            &quot;name&quot;: &quot;Port Willowberg&quot;,
+            &quot;state&quot;: &quot;Wisconsin&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 31,
+            &quot;name&quot;: &quot;Prohaskaville&quot;,
+            &quot;state&quot;: &quot;Indiana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 160,
+            &quot;name&quot;: &quot;Randishire&quot;,
+            &quot;state&quot;: &quot;Hawaii&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 196,
+            &quot;name&quot;: &quot;Rodolfohaven&quot;,
+            &quot;state&quot;: &quot;Arkansas&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 156,
+                    &quot;name&quot;: &quot;Prof Alexzander Kutch DVM&quot;,
+                    &quot;specialty&quot;: &quot;ipsa&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 138,
+            &quot;name&quot;: &quot;Rodrickhaven&quot;,
+            &quot;state&quot;: &quot;South Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 108,
+                    &quot;name&quot;: &quot;Miss Kitty Dibbert&quot;,
+                    &quot;specialty&quot;: &quot;in&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 163,
+            &quot;name&quot;: &quot;Rosenbaumville&quot;,
+            &quot;state&quot;: &quot;Kentucky&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 123,
+                    &quot;name&quot;: &quot;Marco Bradtke MD&quot;,
+                    &quot;specialty&quot;: &quot;ea&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 28,
+            &quot;name&quot;: &quot;Russelburgh&quot;,
+            &quot;state&quot;: &quot;California&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 12,
+            &quot;name&quot;: &quot;Satterfieldbury&quot;,
+            &quot;state&quot;: &quot;Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Brent Rath&quot;,
+                    &quot;specialty&quot;: &quot;quia&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 83,
+            &quot;name&quot;: &quot;Simonisview&quot;,
+            &quot;state&quot;: &quot;District of Columbia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 53,
+                    &quot;name&quot;: &quot;Garett Abernathy&quot;,
+                    &quot;specialty&quot;: &quot;autem&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 25,
+            &quot;name&quot;: &quot;Skileschester&quot;,
+            &quot;state&quot;: &quot;Ohio&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 195,
+            &quot;name&quot;: &quot;South Berenice&quot;,
+            &quot;state&quot;: &quot;Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 155,
+                    &quot;name&quot;: &quot;Bettye Kulas&quot;,
+                    &quot;specialty&quot;: &quot;consequatur&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 29,
+            &quot;name&quot;: &quot;South Bettye&quot;,
+            &quot;state&quot;: &quot;New York&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 48,
+            &quot;name&quot;: &quot;South Carliview&quot;,
+            &quot;state&quot;: &quot;North Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 28,
+                    &quot;name&quot;: &quot;Dr Dayne Rohan&quot;,
+                    &quot;specialty&quot;: &quot;facilis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;South Estelle&quot;,
+            &quot;state&quot;: &quot;North Carolina&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 171,
+            &quot;name&quot;: &quot;South Ethanport&quot;,
+            &quot;state&quot;: &quot;Mississippi&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 131,
+                    &quot;name&quot;: &quot;Alysson Kuhic&quot;,
+                    &quot;specialty&quot;: &quot;fugit&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;name&quot;: &quot;South Germaine&quot;,
+            &quot;state&quot;: &quot;Louisiana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 58,
+            &quot;name&quot;: &quot;South Godfrey&quot;,
+            &quot;state&quot;: &quot;Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 38,
+                    &quot;name&quot;: &quot;Lane Witting Jr&quot;,
+                    &quot;specialty&quot;: &quot;incidunt&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 61,
+            &quot;name&quot;: &quot;South Jess&quot;,
+            &quot;state&quot;: &quot;Massachusetts&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 41,
+                    &quot;name&quot;: &quot;Cleora Price&quot;,
+                    &quot;specialty&quot;: &quot;excepturi&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 47,
+            &quot;name&quot;: &quot;South Judechester&quot;,
+            &quot;state&quot;: &quot;South Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 27,
+                    &quot;name&quot;: &quot;Misty Keeling Sr&quot;,
+                    &quot;specialty&quot;: &quot;ut&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 91,
+            &quot;name&quot;: &quot;South Kaleighside&quot;,
+            &quot;state&quot;: &quot;Illinois&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 61,
+                    &quot;name&quot;: &quot;Astrid Stracke&quot;,
+                    &quot;specialty&quot;: &quot;ratione&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 182,
+            &quot;name&quot;: &quot;South Laverna&quot;,
+            &quot;state&quot;: &quot;Montana&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 142,
+                    &quot;name&quot;: &quot;Alexane Douglas&quot;,
+                    &quot;specialty&quot;: &quot;sunt&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 167,
+            &quot;name&quot;: &quot;South Muhammadburgh&quot;,
+            &quot;state&quot;: &quot;Mississippi&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 127,
+                    &quot;name&quot;: &quot;Oliver Langworth&quot;,
+                    &quot;specialty&quot;: &quot;facere&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 30,
+            &quot;name&quot;: &quot;South Nelleborough&quot;,
+            &quot;state&quot;: &quot;South Carolina&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 136,
+            &quot;name&quot;: &quot;South Ova&quot;,
+            &quot;state&quot;: &quot;Arizona&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 106,
+                    &quot;name&quot;: &quot;Mr Skye Stokes&quot;,
+                    &quot;specialty&quot;: &quot;voluptatum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 40,
+            &quot;name&quot;: &quot;South Patrick&quot;,
+            &quot;state&quot;: &quot;South Carolina&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 20,
+                    &quot;name&quot;: &quot;Mervin Stamm DDS&quot;,
+                    &quot;specialty&quot;: &quot;qui&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 36,
+            &quot;name&quot;: &quot;Tristianmouth&quot;,
+            &quot;state&quot;: &quot;Wisconsin&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 16,
+                    &quot;name&quot;: &quot;Dr Shanelle Green V&quot;,
+                    &quot;specialty&quot;: &quot;non&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Trystanberg&quot;,
+            &quot;state&quot;: &quot;Rhode Island&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 24,
+            &quot;name&quot;: &quot;Turnerville&quot;,
+            &quot;state&quot;: &quot;Indiana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 145,
+            &quot;name&quot;: &quot;Ullrichview&quot;,
+            &quot;state&quot;: &quot;Mississippi&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 115,
+                    &quot;name&quot;: &quot;Drew Gleason&quot;,
+                    &quot;specialty&quot;: &quot;commodi&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 56,
+            &quot;name&quot;: &quot;Uriahland&quot;,
+            &quot;state&quot;: &quot;District of Columbia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 36,
+                    &quot;name&quot;: &quot;Frederique Yost&quot;,
+                    &quot;specialty&quot;: &quot;vero&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 184,
+            &quot;name&quot;: &quot;Vincenzahaven&quot;,
+            &quot;state&quot;: &quot;Pennsylvania&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 144,
+                    &quot;name&quot;: &quot;Marjolaine Hartmann IV&quot;,
+                    &quot;specialty&quot;: &quot;eaque&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 79,
+            &quot;name&quot;: &quot;Vincenzamouth&quot;,
+            &quot;state&quot;: &quot;District of Columbia&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 179,
+            &quot;name&quot;: &quot;Walshfort&quot;,
+            &quot;state&quot;: &quot;Idaho&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 139,
+                    &quot;name&quot;: &quot;Lori Schultz&quot;,
+                    &quot;specialty&quot;: &quot;illo&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 170,
+            &quot;name&quot;: &quot;Welchhaven&quot;,
+            &quot;state&quot;: &quot;Maryland&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 130,
+                    &quot;name&quot;: &quot;Kattie Metz&quot;,
+                    &quot;specialty&quot;: &quot;saepe&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 137,
+            &quot;name&quot;: &quot;West Alexandroburgh&quot;,
+            &quot;state&quot;: &quot;Alabama&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 107,
+                    &quot;name&quot;: &quot;Mose Hammes&quot;,
+                    &quot;specialty&quot;: &quot;vero&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 192,
+            &quot;name&quot;: &quot;West Christport&quot;,
+            &quot;state&quot;: &quot;West Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 152,
+                    &quot;name&quot;: &quot;Dr Thurman Powlowski III&quot;,
+                    &quot;specialty&quot;: &quot;sequi&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 194,
+            &quot;name&quot;: &quot;West Erick&quot;,
+            &quot;state&quot;: &quot;Idaho&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 154,
+                    &quot;name&quot;: &quot;Alba Gusikowski III&quot;,
+                    &quot;specialty&quot;: &quot;nulla&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 39,
+            &quot;name&quot;: &quot;West Eulah&quot;,
+            &quot;state&quot;: &quot;Oklahoma&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 19,
+                    &quot;name&quot;: &quot;Leonora Ullrich&quot;,
+                    &quot;specialty&quot;: &quot;enim&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 186,
+            &quot;name&quot;: &quot;West Gavinborough&quot;,
+            &quot;state&quot;: &quot;Delaware&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 146,
+                    &quot;name&quot;: &quot;Valentina Bauch MD&quot;,
+                    &quot;specialty&quot;: &quot;eos&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 155,
+            &quot;name&quot;: &quot;West Gayleborough&quot;,
+            &quot;state&quot;: &quot;South Carolina&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 181,
+            &quot;name&quot;: &quot;West Gracielaburgh&quot;,
+            &quot;state&quot;: &quot;Delaware&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 141,
+                    &quot;name&quot;: &quot;Claudia Stark&quot;,
+                    &quot;specialty&quot;: &quot;velit&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;West Ignacioshire&quot;,
+            &quot;state&quot;: &quot;North Dakota&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 174,
+            &quot;name&quot;: &quot;West Joeburgh&quot;,
+            &quot;state&quot;: &quot;Connecticut&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 134,
+                    &quot;name&quot;: &quot;Leland Mertz&quot;,
+                    &quot;specialty&quot;: &quot;sint&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 157,
+            &quot;name&quot;: &quot;West Josiane&quot;,
+            &quot;state&quot;: &quot;Vermont&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 71,
+            &quot;name&quot;: &quot;West Kamrenview&quot;,
+            &quot;state&quot;: &quot;Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 51,
+                    &quot;name&quot;: &quot;Kyra Heathcote&quot;,
+                    &quot;specialty&quot;: &quot;cupiditate&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 73,
+            &quot;name&quot;: &quot;West Larue&quot;,
+            &quot;state&quot;: &quot;Montana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 158,
+            &quot;name&quot;: &quot;West Marco&quot;,
+            &quot;state&quot;: &quot;Louisiana&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 20,
+            &quot;name&quot;: &quot;West Mercedesshire&quot;,
+            &quot;state&quot;: &quot;Utah&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 10,
+                    &quot;name&quot;: &quot;Dr Caden Skiles&quot;,
+                    &quot;specialty&quot;: &quot;harum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 116,
+            &quot;name&quot;: &quot;West Sterling&quot;,
+            &quot;state&quot;: &quot;North Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 86,
+                    &quot;name&quot;: &quot;Ms Joannie Friesen&quot;,
+                    &quot;specialty&quot;: &quot;aspernatur&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 82,
+            &quot;name&quot;: &quot;West Thelma&quot;,
+            &quot;state&quot;: &quot;Tennessee&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 52,
+                    &quot;name&quot;: &quot;Prof Gretchen Gerlach II&quot;,
+                    &quot;specialty&quot;: &quot;eum&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;West Ursula&quot;,
+            &quot;state&quot;: &quot;North Carolina&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 57,
+            &quot;name&quot;: &quot;West Verniceberg&quot;,
+            &quot;state&quot;: &quot;Illinois&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 37,
+                    &quot;name&quot;: &quot;Matteo Smith&quot;,
+                    &quot;specialty&quot;: &quot;accusamus&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 92,
+            &quot;name&quot;: &quot;West Vinnie&quot;,
+            &quot;state&quot;: &quot;Ohio&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 62,
+                    &quot;name&quot;: &quot;Theodore Daugherty&quot;,
+                    &quot;specialty&quot;: &quot;reiciendis&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 77,
+            &quot;name&quot;: &quot;Whiteton&quot;,
+            &quot;state&quot;: &quot;Kansas&quot;,
+            &quot;doctors&quot;: []
+        },
+        {
+            &quot;id&quot;: 19,
+            &quot;name&quot;: &quot;Wizamouth&quot;,
+            &quot;state&quot;: &quot;Rhode Island&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 9,
+                    &quot;name&quot;: &quot;Prof Kenyon Rodriguez MD&quot;,
+                    &quot;specialty&quot;: &quot;et&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 132,
+            &quot;name&quot;: &quot;Wymanbury&quot;,
+            &quot;state&quot;: &quot;Virginia&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 102,
+                    &quot;name&quot;: &quot;Mrs Jessyca Walter Jr&quot;,
+                    &quot;specialty&quot;: &quot;assumenda&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 197,
+            &quot;name&quot;: &quot;Zaneborough&quot;,
+            &quot;state&quot;: &quot;South Dakota&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 157,
+                    &quot;name&quot;: &quot;Dr Myrna Botsford Sr&quot;,
+                    &quot;specialty&quot;: &quot;aut&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 144,
+            &quot;name&quot;: &quot;Zariastad&quot;,
+            &quot;state&quot;: &quot;Oklahoma&quot;,
+            &quot;doctors&quot;: [
+                {
+                    &quot;id&quot;: 114,
+                    &quot;name&quot;: &quot;Dangelo Abbott&quot;,
+                    &quot;specialty&quot;: &quot;et&quot;
+                }
+            ]
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-cities" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-cities"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-cities"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-cities" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-cities">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-cities" data-method="GET"
+      data-path="api/cities"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-cities', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-cities"
+                    onclick="tryItOut('GETapi-cities');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-cities"
+                    onclick="cancelTryOut('GETapi-cities');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-cities"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/cities</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-cities"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-cities"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>
