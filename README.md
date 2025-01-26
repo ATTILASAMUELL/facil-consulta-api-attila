@@ -87,8 +87,9 @@ Para instalar o projeto, siga os passos abaixo:
 ### Documentação da API - SCRIBE
 
 ```bash
-   ./vendor/bin/sail php artisan scribe:generate  OU php artisan scribe:generate
- 
+./vendor/bin/sail php artisan scribe:generate  OU php artisan scribe:generate
+```
+
 
 ### Teste Php Unit - Module Auth
 
